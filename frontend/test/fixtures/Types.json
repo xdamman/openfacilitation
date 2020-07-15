@@ -1,0 +1,60 @@
+{
+  "records": [
+    {
+      "id": "rec8Z12lJxzqE738n",
+      "fields": {
+        "Name": "Team retreats",
+        "Facilitators": ["recfUcYOMkEuJGncv", "recT8S6I9nV88rHa1"]
+      },
+      "createdTime": "2020-05-28T19:35:34.000Z"
+    },
+    {
+      "id": "recCCPrDmBJgJn8bm",
+      "fields": {
+        "Name": "People Assembly",
+        "Facilitators": ["recfUcYOMkEuJGncv", "rec6t4wMI1lLUv60c"]
+      },
+      "createdTime": "2020-05-28T19:35:42.000Z"
+    },
+    {
+      "id": "recQ1ID4oRHUDKYUC",
+      "fields": {
+        "Name": "Meeting",
+        "Facilitators": ["recfUcYOMkEuJGncv", "rec6t4wMI1lLUv60c"]
+      },
+      "createdTime": "2020-05-28T19:35:55.000Z"
+    },
+    {
+      "id": "recZEu1QwlsE1hh3R",
+      "fields": {
+        "Name": "Online Conference Facilitation",
+        "Facilitators": ["recfUcYOMkEuJGncv"]
+      },
+      "createdTime": "2020-05-28T13:02:21.000Z"
+    },
+    {
+      "id": "recadGnxFaRLUXyyg",
+      "fields": {
+        "Name": "Online People Assembly",
+        "Facilitators": ["recfUcYOMkEuJGncv"]
+      },
+      "createdTime": "2020-05-28T13:00:19.000Z"
+    },
+    {
+      "id": "recpTWgOKicPQvqFm",
+      "fields": {
+        "Name": "Online meeting",
+        "Facilitators": ["recfUcYOMkEuJGncv"]
+      },
+      "createdTime": "2020-05-28T13:00:19.000Z"
+    },
+    {
+      "id": "rectQmswAqADk9wtp",
+      "fields": {
+        "Name": "Online Facilitation Training",
+        "Facilitators": ["recfUcYOMkEuJGncv", "recNTugJhswCLFztA"]
+      },
+      "createdTime": "2020-05-28T13:00:19.000Z"
+    }
+  ]
+}

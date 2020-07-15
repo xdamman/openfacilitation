@@ -1,0 +1,32 @@
+{
+  "records": [
+    {
+      "id": "rec8Kpe52lBQbIoZu",
+      "fields": {
+        "Facilitators": ["recT8S6I9nV88rHa1"],
+        "Name": "French"
+      },
+      "createdTime": "2020-05-28T18:59:32.000Z"
+    },
+    {
+      "id": "recLFUHR3fHp9YdO6",
+      "fields": {
+        "Facilitators": ["recfUcYOMkEuJGncv", "recNTugJhswCLFztA"],
+        "Name": "Dutch"
+      },
+      "createdTime": "2020-05-28T18:59:32.000Z"
+    },
+    {
+      "id": "recxbOOhzs67euv3B",
+      "fields": {
+        "Facilitators": [
+          "recfUcYOMkEuJGncv",
+          "recT8S6I9nV88rHa1",
+          "recNTugJhswCLFztA"
+        ],
+        "Name": "English"
+      },
+      "createdTime": "2020-05-28T18:59:32.000Z"
+    }
+  ]
+}

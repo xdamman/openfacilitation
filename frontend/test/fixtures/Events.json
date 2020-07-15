@@ -1,0 +1,102 @@
+{
+  "records": [
+    {
+      "id": "rec1VfeE9275oql0S",
+      "fields": {
+        "Video": "https://www.youtube.com/watch?v=FjCeeRwKBoY&t=155s",
+        "Client": ["recVxIrWDy41cRheX"],
+        "Location": "Online",
+        "Facilitators": ["recfUcYOMkEuJGncv", "recWc3MUQ9wm908H9"],
+        "Duration": 7200,
+        "Name": "People Assembly on 5G",
+        "Description": "People Assembly online to learn about the different perspectives around the 5G topic. \n\n2 experts presented their point of view then the audience split into breakout rooms to learn about each other's perspectives\n",
+        "Start date": "2020-04-28T12:00:00.000Z"
+      },
+      "createdTime": "2020-05-28T19:20:18.000Z"
+    },
+    {
+      "id": "recCs05gmhoTaas5g",
+      "fields": {
+        "Client": ["receMwzzTVnhyfTUD"],
+        "Location": "Brussels",
+        "Facilitators": ["recT8S6I9nV88rHa1"],
+        "Duration": 115200,
+        "Name": "Open Collective Team Retreat",
+        "Website": "https://opencollective.com",
+        "Description": "3 day team retreat in Brussels for a remote only tech startup\n",
+        "Attachments": [
+          {
+            "id": "attM7lAHzXnGuZpX7",
+            "url": "https://dl.airtable.com/.attachments/47eb409a3184db95611561e989d851da/74fbf086/oc-team-retreat-brussels.jpeg",
+            "filename": "oc-team-retreat-brussels.jpeg",
+            "size": 2521602,
+            "type": "image/jpeg",
+            "thumbnails": {
+              "small": {
+                "url": "https://dl.airtable.com/.attachmentThumbnails/c387ac78e37514afce8f998ae363c162/f255ce92",
+                "width": 48,
+                "height": 36
+              },
+              "large": {
+                "url": "https://dl.airtable.com/.attachmentThumbnails/6788f99a9fef689a8952f184b920657f/69494d4b",
+                "width": 683,
+                "height": 512
+              },
+              "full": {
+                "url": "https://dl.airtable.com/.attachmentThumbnails/4c42a2c26bdf4c38cee408abf5e1d5e4/cf2ad174",
+                "width": 3000,
+                "height": 3000
+              }
+            }
+          }
+        ],
+        "Start date": "2020-01-26T17:00:00.000Z"
+      },
+      "createdTime": "2020-05-28T19:20:18.000Z"
+    },
+    {
+      "id": "recvxeZ6E8ed3srcb",
+      "fields": {
+        "Client": ["recoxGGdQDH2PudYT"],
+        "Location": "Brussels",
+        "Facilitators": [
+          "recfUcYOMkEuJGncv",
+          "recWc3MUQ9wm908H9",
+          "rec6t4wMI1lLUv60c"
+        ],
+        "Duration": 7200,
+        "Name": "Fridays for Future with Greta",
+        "Website": "https://fridaysforfuture.org",
+        "Description": "Gathering of young activists from #FridaysForFuture in Brussels with Greta Thunberg\n",
+        "Attachments": [
+          {
+            "id": "attxlpflDn6pdFNkU",
+            "url": "https://dl.airtable.com/.attachments/f6fe163813903a410d80cfb124de940e/3fbc9afd/20200307-greta-facilitatation.jpeg",
+            "filename": "20200307-greta-facilitatation.jpeg",
+            "size": 1061222,
+            "type": "image/jpeg",
+            "thumbnails": {
+              "small": {
+                "url": "https://dl.airtable.com/.attachmentThumbnails/a3d33fca95daf6af45fa96c147a63685/99805109",
+                "width": 48,
+                "height": 36
+              },
+              "large": {
+                "url": "https://dl.airtable.com/.attachmentThumbnails/f660bc063d4d6c1e260c742d89a0a9e9/38624d2d",
+                "width": 683,
+                "height": 512
+              },
+              "full": {
+                "url": "https://dl.airtable.com/.attachmentThumbnails/803aeedf775c51be1913002e25eca1da/5da237d9",
+                "width": 3000,
+                "height": 3000
+              }
+            }
+          }
+        ],
+        "Start date": "2020-03-07T09:00:00.000Z"
+      },
+      "createdTime": "2020-05-28T19:20:18.000Z"
+    }
+  ]
+}
