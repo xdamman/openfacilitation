@@ -8,6 +8,7 @@ import Topbar from "../../components/Topbar";
 import Events from "../../components/Events";
 import { Avatar } from "../../styles";
 import { pluralize } from "../../lib/helpers";
+import StickyBox from "react-sticky-box";
 
 const Body = styled.div`
   width: 100%;
@@ -30,6 +31,15 @@ const Description = styled.p`
   margin: 10px;
 `;
 
+const FixedFooter = styled.div`
+  position: fixed;
+  bottom: 0px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.95);
+  width: 100%;
+  padding: 15px 0;
+`;
+
 export default ({ facilitator }) => {
   if (!facilitator) {
     return <div></div>;
@@ -37,7 +47,9 @@ export default ({ facilitator }) => {
   return (
     <Body>
       <center>
-        <Topbar title={facilitator.name} />
+        <StickyBox>
+          <Topbar title={facilitator.name} />
+        </StickyBox>
         <Box my={5}>
           <Avatar src={facilitator.picture.large} />
         </Box>
@@ -64,15 +76,19 @@ export default ({ facilitator }) => {
           )}
           {facilitator.email && (
             <Box mt={4} mb={6}>
-              <Button
-                color="primary"
-                variant="contained"
-                href={`mailto:${facilitator.email}?subject=${encodeURIComponent(
-                  "Get in touch via openfacilitation.com"
-                )}`}
-              >
-                Get in touch
-              </Button>
+              <FixedFooter>
+                <Button
+                  color="primary"
+                  variant="contained"
+                  href={`mailto:${
+                    facilitator.email
+                  }?subject=${encodeURIComponent(
+                    "Get in touch via openfacilitation.com"
+                  )}`}
+                >
+                  Get in touch
+                </Button>
+              </FixedFooter>
             </Box>
           )}
         </Flex>

@@ -18,9 +18,13 @@ const H2 = styled.h2`
 
 const A = styled.a`
   text-decoration: none;
+  cursor: pointer;
 `;
 
-const Topbar = styled.div``;
+const Topbar = styled.div`
+  height: 56px;
+  background: rgba(255, 255, 255, 0.95);
+`;
 
 export default ({ title }) => {
   return (
@@ -34,14 +38,14 @@ export default ({ title }) => {
           </Link>
         </Box>
         <Box mr={2}>
-          <H1>
-            <Link href="/">
-              <A>Open Facilitation</A>
-            </Link>
-          </H1>
+          <H1>{title}</H1>
         </Box>
         <Box>
-          <H2>{title}</H2>
+          <Link href="/">
+            <A>
+              <H2>Open Facilitation</H2>
+            </A>
+          </Link>
         </Box>
       </Flex>
     </Topbar>
