@@ -9,6 +9,6 @@ export const Icon = styled.img`
 
 export const Avatar = styled.img`
   border-radius: 50%;
-  border: 2px solid #9ccafe;
+  border: 3px solid #9ccafe;
   max-height: 128px;
 `;

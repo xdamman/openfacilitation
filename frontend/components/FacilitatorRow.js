@@ -10,20 +10,19 @@ const Row = styled.div`
   text-align: left;
   padding: 10px;
   overflow: hidden;
-  margin: 5px;
   box-sizing: border-box;
 `;
 
 const H1 = styled.h1`
-  font-size: 14px;
+  font-size: 15px;
   margin-top: 0px;
 `;
 
 const Description = styled.p`
-  font-size: 13px;
+  font-size: 14px;
   overflow: hidden;
   color: #222;
-  line-height: 1.3;
+  line-height: 1.4;
   margin: 5px 0;
 `;
 
@@ -37,7 +36,7 @@ const A = styled.a`
 `;
 
 const Metadata = styled.div`
-  font-size: 11pt;
+  font-size: 10pt;
   color: #444;
   display: flex;
   flex-wrap: wrap;
@@ -60,36 +59,41 @@ function showData(data) {
 
 export default ({ data }) => {
   return (
-    <Row>
-      <H1>{data.name}</H1>
-      <Flex>
-        <div>
-          <Avatar src={data.picture.large || "/images/avatar.png"} width={64} />
-        </div>
-        <Box ml={2}>
-          <Metadata>
-            {data.city && (
-              <div>
-                <Icon src="/images/icons/location.png" />
-                {data.city}
-              </div>
-            )}
-            {data.languages && (
-              <div>
-                <Icon src="/images/icons/lang.png" />
-                {data.languages.join(", ")}
-              </div>
-            )}
-            {data.meetingTypes && (
-              <MeetingTypes>
-                <Icon src="/images/icons/zoom.png" />
-                <Tags array={data.meetingTypes} />
-              </MeetingTypes>
-            )}
-          </Metadata>
-          <Description>{data.description}</Description>
-        </Box>
-      </Flex>
-    </Row>
+    <Box mx={1}>
+      <Row>
+        <H1>{data.name}</H1>
+        <Flex>
+          <div>
+            <Avatar
+              src={data.picture.large || "/images/avatar.png"}
+              width={64}
+            />
+          </div>
+          <Box ml={2}>
+            <Metadata>
+              {data.city && (
+                <div>
+                  <Icon src="/images/icons/location.png" />
+                  {data.city}
+                </div>
+              )}
+              {data.languages && (
+                <div>
+                  <Icon src="/images/icons/lang.png" />
+                  {data.languages.join(", ")}
+                </div>
+              )}
+              {data.meetingTypes && (
+                <MeetingTypes>
+                  <Icon src="/images/icons/zoom.png" />
+                  <Tags array={data.meetingTypes} />
+                </MeetingTypes>
+              )}
+            </Metadata>
+            <Description>{data.description}</Description>
+          </Box>
+        </Flex>
+      </Row>
+    </Box>
   );
 };

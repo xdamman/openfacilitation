@@ -52,7 +52,6 @@ const H2 = styled.h2`
 `;
 
 const ResultNumbers = styled.div`
-  margin-left: 10px;
   text-transform: uppercase;
   color: #333;
 `;
@@ -73,10 +72,12 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
       {!hasResults && <div>No facilitator found</div>}
       {hasResults && (
         <>
-          <ResultNumbers>
-            {facilitators.length} facilitator
-            {facilitators.length > 1 ? "s" : ""} found
-          </ResultNumbers>
+          <Box ml={3}>
+            <ResultNumbers>
+              {facilitators.length} facilitator
+              {facilitators.length > 1 ? "s" : ""} found
+            </ResultNumbers>
+          </Box>
           <Flex flexWrap="wrap">
             {facilitators.map((node) => (
               <Link href={`/profiles/${node.id}`}>

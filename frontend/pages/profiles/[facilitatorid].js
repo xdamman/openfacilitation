@@ -7,6 +7,7 @@ import Tags from "../../components/Tags";
 import Topbar from "../../components/Topbar";
 import Events from "../../components/Events";
 import { Avatar } from "../../styles";
+import { pluralize } from "../../lib/helpers";
 
 const Body = styled.div`
   width: 100%;
@@ -40,7 +41,7 @@ export default ({ facilitator }) => {
         <Box my={5}>
           <Avatar src={facilitator.picture.large} />
         </Box>
-        <Box my={4}>
+        <Box my={4} mx={2}>
           <Description>{facilitator.description}</Description>
         </Box>
         <Flex flexDirection="column">
@@ -54,12 +55,15 @@ export default ({ facilitator }) => {
           />
           {facilitator.events && facilitator.events.length > 0 && (
             <Box>
-              <H2>Events facilitated</H2>
+              <H2>
+                {facilitator.events.length}{" "}
+                {pluralize("Event", facilitator.events.length)} Facilitated
+              </H2>
               <Events events={facilitator.events} />
             </Box>
           )}
           {facilitator.email && (
-            <Box my={4}>
+            <Box mt={4} mb={6}>
               <Button
                 color="primary"
                 variant="contained"
