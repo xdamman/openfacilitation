@@ -1,21 +1,11 @@
 import styled from "styled-components";
-import Topbar from "../../components/Topbar";
-import SearchForm from "../../components/SearchForm";
-import FacilitatorRow from "../../components/FacilitatorRow";
+import Topbar from "../../../components/Topbar";
+import SearchForm from "../../../components/SearchForm";
+import FacilitatorRow from "../../../components/FacilitatorRow";
 import { Flex, Box } from "rebass";
-import { getData, join } from "../../lib/data";
+import { getData, join } from "../../../lib/data";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-const Body = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-  font-family: Content-font, Roboto, sans-serif;
-  font-weight: 400;
-  line-height: 1.625;
-  font-size: 16px;
-  overflow-x: hidden !important;
-`;
 
 const A = styled.a`
   text-decoration: none;
@@ -60,8 +50,8 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
   const handleChange = (filters) => {
     // console.log(">>> handleChange", filters);
     router.push(
-      "/[...filters]",
-      `/${filters.language || "all"}/${filters.type || "any"}`
+      "/directory/[...filters]",
+      `/directory/${filters.language || "all"}/${filters.type || "any"}`
     );
   };
 
@@ -92,7 +82,7 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
   );
 
   return (
-    <Body>
+    <>
       <Topbar title="Find a facilitator" />
       <Box ml={2}>
         <SearchForm
@@ -103,7 +93,7 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
         />
       </Box>
       <Box mt={4}>{results}</Box>
-    </Body>
+    </>
   );
 };
 
@@ -123,6 +113,7 @@ export async function getStaticProps({ params }) {
   console.log(">>> query", query);
   const languages = await getData("Languages");
   const meetingTypes = await getData("Types");
+
   let facilitators = await getData("Facilitators", query);
   if (facilitators && facilitators.length > 0) {
     facilitators = join(
@@ -146,12 +137,19 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
+  const languages = await getData("Languages");
+  const meetingTypes = await getData("Types");
+  const paths = [];
+
+  languages.map((l) => {
+    paths.push({ params: { filters: [l.name] } });
+    meetingTypes.map((m) => {
+      paths.push({ params: { filters: [l.name, m.name] } });
+    });
+  });
+
   return {
-    paths: [
-      { params: { filters: ["English"] } },
-      { params: { filters: ["French"] } },
-      { params: { filters: ["Dutch"] } },
-    ],
+    paths,
     fallback: true,
   };
 }

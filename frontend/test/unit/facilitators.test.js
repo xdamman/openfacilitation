@@ -53,11 +53,7 @@ describe("join table", () => {
     const clientsTable = await getData("Clients", {
       facilitator: "Leen Schelfhout",
     });
-    console.log(">>> events table", eventsTable);
-    console.log(">>> clients table", clientsTable);
     const joined = join(eventsTable, "client", clientsTable, "name");
-    console.log(">>> joined", joined);
-    console.log(">>> all done");
     expect(clientsTable.length).toEqual(3);
   });
 

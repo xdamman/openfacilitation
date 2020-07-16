@@ -78,7 +78,7 @@ export default () => (
           <Button
             color="primary"
             variant="contained"
-            href="/facilitators"
+            href="/directory"
             disableElevation
           >
             Directory of facilitators

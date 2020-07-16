@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import Topbar from "../components/Topbar";
-import SearchForm from "../components/SearchForm";
-import FacilitatorRow from "../components/FacilitatorRow";
+import Topbar from "../../components/Topbar";
+import SearchForm from "../../components/SearchForm";
+import FacilitatorRow from "../../components/FacilitatorRow";
 import { Flex, Box } from "rebass";
-import { getData, join } from "../lib/data";
+import { getData, join } from "../../lib/data";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import FooterButton from "../components/FooterButton";
+import FooterButton from "../../components/FooterButton";
 
 const A = styled.a`
   text-decoration: none;
@@ -52,8 +52,8 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
   const handleChange = (filters) => {
     // console.log(">>> handleChange", filters);
     router.push(
-      "/[...filters]",
-      `/${filters.language || "all"}/${filters.type || "any"}`
+      "/directory/[...filters]",
+      `/directory/${filters.language || "all"}/${filters.type || "any"}`
     );
   };
 

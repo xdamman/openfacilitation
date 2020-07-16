@@ -104,7 +104,7 @@ export async function getStaticProps({ params }) {
     facilitator: facilitator.name,
   });
   const events = join(eventsTable, "client", clients);
-  console.log(">>> events", events);
+
   facilitator = join(
     join(
       join([facilitator], "languages", languages, "name"),

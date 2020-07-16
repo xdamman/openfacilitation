@@ -23,6 +23,7 @@ const A = styled.a`
 
 const Topbar = styled.div`
   height: 56px;
+  z-index: 1000;
   background: rgba(255, 255, 255, 0.95);
 `;
 
