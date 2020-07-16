@@ -6,6 +6,7 @@ import { Button } from "@material-ui/core";
 import Tags from "../../components/Tags";
 import Topbar from "../../components/Topbar";
 import Events from "../../components/Events";
+import { Avatar } from "../../styles";
 
 const Body = styled.div`
   width: 100%;
@@ -24,12 +25,6 @@ const H2 = styled.h2`
   margin: 40px 0 10px;
 `;
 
-const Avatar = styled.img`
-  max-height: 128px;
-  border-radius: 100%;
-  margin: 30px 0;
-`;
-
 const Description = styled.p`
   margin: 10px;
 `;
@@ -42,8 +37,12 @@ export default ({ facilitator }) => {
     <Body>
       <center>
         <Topbar title={facilitator.name} />
-        <Avatar src={facilitator.picture.large} />
-        <Description>{facilitator.description}</Description>
+        <Box my={5}>
+          <Avatar src={facilitator.picture.large} />
+        </Box>
+        <Box my={4}>
+          <Description>{facilitator.description}</Description>
+        </Box>
         <Flex flexDirection="column">
           <Tags
             array={facilitator.meetingTypes}
@@ -60,7 +59,7 @@ export default ({ facilitator }) => {
             </Box>
           )}
           {facilitator.email && (
-            <Box mt={4}>
+            <Box my={4}>
               <Button
                 color="primary"
                 variant="contained"

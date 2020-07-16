@@ -3,49 +3,54 @@ import { Flex, Box } from "rebass";
 import styled from "styled-components";
 
 const EventEntry = styled.div`
-  margin-top: 20px;
+  margin: 50px 0;
+`;
+
+const EventTitle = styled.h1`
+  font-weight: normal;
+  font-size: 16pt;
+  margin-bottom: 0;
 `;
 
 const Picture = styled.img`
-  max-width: 100%;
+  width: 100%;
+  max-width: 600px;
+  margin: 10px 0 5px 0;
 `;
 
 const Metadata = styled.div`
   color: #444;
+  margin: 0 0 10px 0;
   font-size: 10pt;
-  display: flex;
-  justify-content: center;
-
   a {
     text-decoration: none;
   }
 `;
 
-const Date = styled.div``;
-const Organiser = styled.div``;
+const Date = styled.span``;
+const Organiser = styled.span``;
 const Description = styled.p`
   margin-top: 0;
+  padding: 10px;
   color: #222;
 `;
 
 export default ({ events }) => {
   if (!events || events.length === 0) return <span />;
   return (
-    <EventEntry>
+    <div>
       {events.map((event) => (
-        <div>
-          <Box>
-            <b>{event.name}</b>
-          </Box>
+        <EventEntry>
+          <EventTitle>{event.name}</EventTitle>
           <Metadata>
-            <Date>{moment(event.startDate).format("MMMM Do YYYY")}</Date>
+            <span>{moment(event.startDate).format("MMMM Do YYYY")}</span>
             {event.client[0] && (
-              <Organiser>
+              <span>
                 , organised by{" "}
                 <a href={event.client[0].website}>{event.client[0].name}</a>
-              </Organiser>
+              </span>
             )}
-            {event.attendees && <div>, {event.attendees} attendees</div>}
+            {event.attendees && <span>, {event.attendees} attendees</span>}
           </Metadata>
           {event.picture.large && (
             <Box>
@@ -55,8 +60,8 @@ export default ({ events }) => {
           <Box>
             <Description>{event.description}</Description>
           </Box>
-        </div>
+        </EventEntry>
       ))}
-    </EventEntry>
+    </div>
   );
 };

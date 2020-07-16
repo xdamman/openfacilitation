@@ -26,6 +26,7 @@ const StyledLink = styled.a`
   max-width: 300px;
   cursor: pointer;
   padding: 10px;
+  border-radius: 5px;
   &:hover {
     background: #eee;
   }

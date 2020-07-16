@@ -14,6 +14,7 @@ const Body = styled.div`
   font-weight: 400;
   line-height: 1.625;
   font-size: 16px;
+  overflow-x: hidden !important;
 `;
 
 const A = styled.a`
@@ -49,6 +50,12 @@ const H2 = styled.h2`
   margin: 40px 0 10px;
 `;
 
+const ResultNumbers = styled.div`
+  margin-left: 10px;
+  text-transform: uppercase;
+  color: #333;
+`;
+
 export default ({ facilitators, languages, meetingTypes, query }) => {
   const router = useRouter();
   const handleChange = (filters) => {
@@ -62,13 +69,13 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
   const hasResults = facilitators && facilitators.length > 0;
   const results = (
     <div>
-      {!hasResults && <div>No facilitator found</div>}
+      {!hasResults && <center>No facilitator found</center>}
       {hasResults && (
         <>
-          <strong>
+          <ResultNumbers>
             {facilitators.length} facilitator
             {facilitators.length > 1 ? "s" : ""} found
-          </strong>
+          </ResultNumbers>
           <Flex flexWrap="wrap">
             {facilitators.map((node) => (
               <Link href={`/profiles/${node.id}`}>
@@ -86,12 +93,14 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
   return (
     <Body>
       <Topbar title="Find a facilitator" />
-      <SearchForm
-        languages={languages}
-        types={meetingTypes}
-        defaultValue={query}
-        onChange={(filters) => handleChange(filters)}
-      />
+      <Box ml={2}>
+        <SearchForm
+          languages={languages}
+          types={meetingTypes}
+          defaultValue={query}
+          onChange={(filters) => handleChange(filters)}
+        />
+      </Box>
       <Box mt={4}>{results}</Box>
     </Body>
   );
@@ -114,7 +123,6 @@ export async function getStaticProps({ params }) {
   const languages = await getData("Languages");
   const meetingTypes = await getData("Types");
   let facilitators = await getData("Facilitators", query);
-  console.log(">>> facilitators found", facilitators);
   if (facilitators && facilitators.length > 0) {
     facilitators = join(
       join(facilitators, "languages", languages, "name"),
@@ -123,6 +131,9 @@ export async function getStaticProps({ params }) {
       "name"
     );
   }
+
+  facilitators = facilitators.filter((f) => f.name && f.email);
+  console.log(`>>> ${facilitators.length} facilitators found`);
 
   return {
     props: { query, languages, facilitators, meetingTypes },

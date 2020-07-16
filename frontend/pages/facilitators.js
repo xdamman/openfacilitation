@@ -14,6 +14,7 @@ const Body = styled.div`
   font-weight: 400;
   line-height: 1.625;
   font-size: 16px;
+  overflow-x: hidden !important;
 `;
 
 const A = styled.a`
@@ -21,6 +22,7 @@ const A = styled.a`
   display: block;
   width: 100%;
   cursor: pointer;
+  border-radius: 5px;
   &:hover {
     background: #eee;
   }
@@ -54,6 +56,7 @@ const ResultNumbers = styled.div`
   text-transform: uppercase;
   color: #333;
 `;
+
 export default ({ facilitators, languages, meetingTypes, query }) => {
   const router = useRouter();
   const handleChange = (filters) => {
@@ -121,7 +124,6 @@ export async function getStaticProps({ params }) {
   const languages = await getData("Languages");
   const meetingTypes = await getData("Types");
   let facilitators = await getData("Facilitators", query);
-  console.log(`>>> ${facilitators.length} facilitators found`);
   if (facilitators && facilitators.length > 0) {
     facilitators = join(
       join(facilitators, "languages", languages, "name"),
@@ -131,6 +133,7 @@ export async function getStaticProps({ params }) {
     );
   }
   facilitators = facilitators.filter((f) => f.name && f.email);
+  console.log(`>>> ${facilitators.length} facilitators found`);
 
   return {
     props: { query, languages, facilitators, meetingTypes },

@@ -5,6 +5,8 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 `;
 
@@ -13,7 +15,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <>
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
         <GlobalStyle />
       </>
     );

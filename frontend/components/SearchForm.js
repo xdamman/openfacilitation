@@ -10,6 +10,7 @@ const StyledSelect = (props) => (
     sx={{
       borderRadius: "4px",
       borderColor: "#3B84FD",
+      fontSize: "12pt",
     }}
   />
 );
