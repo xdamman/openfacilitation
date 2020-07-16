@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { Button } from "@material-ui/core";
+import { Flex, Box } from "rebass";
 
 const Body = styled.div`
   max-width: 660px;
@@ -64,14 +66,6 @@ export default () => (
   <Body>
     <center>
       <img src="/images/openfacilitation-logo.png" />
-      <Links>
-        <Link href="/facilitators">
-          <StyledLink>Directory of facilitators</StyledLink>
-        </Link>
-        <StyledLink href="https://airtable.com/shrDhK4QdTe0lyFTM">
-          Apply to join our collective
-        </StyledLink>
-      </Links>
 
       <About>
         <H2>Find a facilitator for your next event</H2>
@@ -80,6 +74,16 @@ export default () => (
           brainstorming, a team retreat, we can help you find the right person.
           Browse our directory or directly submit a request for your event.
         </p>
+        <Flex justifyContent="center">
+          <Button
+            color="primary"
+            variant="contained"
+            href="/facilitators"
+            disableElevation
+          >
+            Directory of facilitators
+          </Button>
+        </Flex>
 
         <H2>A Community of Facilitators</H2>
         <p>
@@ -93,6 +97,18 @@ export default () => (
         <p>
           You are a facilitator? Join our community to increase your visibility,
           learn from fellow facilitators and find new opportunities.
+          <Flex justifyContent="center">
+            <Box mt={3}>
+              <Button
+                color="primary"
+                variant="outlined"
+                href="/join"
+                disableElevation
+              >
+                Apply to join our collective
+              </Button>
+            </Box>
+          </Flex>
         </p>
       </About>
 

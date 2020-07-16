@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const Tag = styled.div`
   border-radius: 5px;
-  background: #badafe;
-  color: black;
+  border: 1px solid #badafe;
+  color: #3b84fd;
   padding: 1px 8px;
   float: left;
   margin: 2px 2px;

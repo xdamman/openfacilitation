@@ -2,13 +2,13 @@ import styled from "styled-components";
 import FacilitatorRow from "../../components/FacilitatorRow";
 import { Flex, Box } from "rebass";
 import { getData, join } from "../../lib/data";
-import { Button } from "@material-ui/core";
 import Tags from "../../components/Tags";
 import Topbar from "../../components/Topbar";
 import Events from "../../components/Events";
 import { Avatar } from "../../styles";
 import { pluralize } from "../../lib/helpers";
 import StickyBox from "react-sticky-box";
+import FooterButton from "../../components/FooterButton";
 
 const Body = styled.div`
   width: 100%;
@@ -23,21 +23,13 @@ const Body = styled.div`
 
 const H2 = styled.h2`
   font-size: 24px;
-  font-weight: 700;
-  margin: 40px 0 10px;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin: 50px 0 0px;
 `;
 
 const Description = styled.p`
   margin: 10px;
-`;
-
-const FixedFooter = styled.div`
-  position: fixed;
-  bottom: 0px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.95);
-  width: 100%;
-  padding: 15px 0;
 `;
 
 export default ({ facilitator }) => {
@@ -76,19 +68,12 @@ export default ({ facilitator }) => {
           )}
           {facilitator.email && (
             <Box mt={4} mb={6}>
-              <FixedFooter>
-                <Button
-                  color="primary"
-                  variant="contained"
-                  href={`mailto:${
-                    facilitator.email
-                  }?subject=${encodeURIComponent(
-                    "Get in touch via openfacilitation.com"
-                  )}`}
-                >
-                  Get in touch
-                </Button>
-              </FixedFooter>
+              <FooterButton
+                label="Get in touch"
+                href={`mailto:${facilitator.email}?subject=${encodeURIComponent(
+                  "Get in touch via openfacilitation.com"
+                )}`}
+              />
             </Box>
           )}
         </Flex>

@@ -10,6 +10,7 @@ const EventTitle = styled.h1`
   font-weight: normal;
   font-size: 16pt;
   margin-bottom: 0;
+  color: #222;
 `;
 
 const Picture = styled.img`
@@ -32,7 +33,7 @@ const Organiser = styled.span``;
 const Description = styled.p`
   margin-top: 0;
   padding: 10px;
-  color: #222;
+  color: #333;
 `;
 
 export default ({ events }) => {

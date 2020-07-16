@@ -6,16 +6,7 @@ import { Flex, Box } from "rebass";
 import { getData, join } from "../lib/data";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-const Body = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-  font-family: Content-font, Roboto, sans-serif;
-  font-weight: 400;
-  line-height: 1.625;
-  font-size: 16px;
-  overflow-x: hidden !important;
-`;
+import FooterButton from "../components/FooterButton";
 
 const A = styled.a`
   text-decoration: none;
@@ -93,7 +84,7 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
   );
 
   return (
-    <Body>
+    <>
       <Topbar title="Find a facilitator" />
       <Box ml={2}>
         <SearchForm
@@ -104,7 +95,8 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
         />
       </Box>
       <Box mt={4}>{results}</Box>
-    </Body>
+      <FooterButton label="Submit a request" href="/request" />
+    </>
   );
 };
 

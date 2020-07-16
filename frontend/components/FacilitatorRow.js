@@ -16,6 +16,7 @@ const Row = styled.div`
 const H1 = styled.h1`
   font-size: 15px;
   margin-top: 0px;
+  margin-bottom: 0px;
 `;
 
 const Description = styled.p`
@@ -61,7 +62,6 @@ export default ({ data }) => {
   return (
     <Box mx={1}>
       <Row>
-        <H1>{data.name}</H1>
         <Flex>
           <div>
             <Avatar
@@ -70,6 +70,7 @@ export default ({ data }) => {
             />
           </div>
           <Box ml={2}>
+            <H1>{data.name}</H1>
             <Metadata>
               {data.city && (
                 <div>
