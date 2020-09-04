@@ -68,8 +68,8 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
             </ResultNumbers>
           </Box>
           <Flex flexWrap="wrap">
-            {facilitators.map((node) => (
-              <Link href={`/profiles/${node.id}`}>
+            {facilitators.map((node, i) => (
+              <Link href={`/profiles/${node.id}`} key={i}>
                 <A>
                   <FacilitatorRow data={node} />
                 </A>

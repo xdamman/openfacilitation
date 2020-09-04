@@ -1,6 +1,7 @@
 import App from "next/app";
 import React from "react";
 import { createGlobalStyle } from "styled-components";
+import Head from "next/head";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -21,6 +22,13 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
     return (
       <>
+        <Head>
+          <link rel="shortcut icon" href="/images/openfacilitation-icon.png" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+          />
+        </Head>
         <Component {...pageProps} />
         <GlobalStyle />
       </>

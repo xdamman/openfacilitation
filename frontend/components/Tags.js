@@ -14,9 +14,7 @@ export default ({ array, styles }) => {
   if (!array || array.length === 0) return <span />;
   return (
     <div style={styles}>
-      {array.map((tag) => (
-        <Tag>{tag}</Tag>
-      ))}
+      {array.map((tag, i) => tag && <Tag key={i}>{tag}</Tag>)}
     </div>
   );
 };

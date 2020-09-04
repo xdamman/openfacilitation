@@ -31,13 +31,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <link rel="shortcut icon" href="/images/openfacilitation-icon.png" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

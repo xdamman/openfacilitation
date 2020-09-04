@@ -36,12 +36,12 @@ const Description = styled.p`
   color: #333;
 `;
 
-export default ({ events }) => {
+const Events = ({ events }) => {
   if (!events || events.length === 0) return <span />;
   return (
     <div>
-      {events.map((event) => (
-        <EventEntry>
+      {events.map((event, i) => (
+        <EventEntry key={i}>
           <EventTitle>{event.name}</EventTitle>
           <Metadata>
             <span>{moment(event.startDate).format("MMMM Do YYYY")}</span>
@@ -66,3 +66,5 @@ export default ({ events }) => {
     </div>
   );
 };
+
+export default Events;
