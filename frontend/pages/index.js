@@ -71,8 +71,9 @@ export default () => (
         <H2>Find a facilitator for your next event</H2>
         <p>
           Whether you are organising a general assembly online or offline, a
-          brainstorming, a team retreat, we can help you find the right person.
-          Browse our directory or directly submit a request for your event.
+          brainstorming, a team building or team retreat, we can help you find
+          the right person. Browse our directory or directly submit a request
+          for your event.
         </p>
         <Flex justifyContent="center">
           <Button
@@ -92,10 +93,17 @@ export default () => (
           directory of facilitators, improve our visibility and make it easier
           for potential customers to hire one of us based on their needs.
         </p>
+        <p>
+          Facilitators help groups reach their full potential. They are experts
+          in creating and moderating spaces where people can meet, work, solve
+          conflicts or take decisions together. To promote this work and improve
+          our visibility, we decided to build a directory of facilitators. It
+          will make it easier to find a facilitator and hire one of us.
+        </p>
 
         <H2>Join our community</H2>
         <p>
-          You are a facilitator? Join our community to increase your visibility,
+          Are you a facilitator? Join our community to increase your visibility,
           learn from fellow facilitators and find new opportunities.
           <Flex justifyContent="center">
             <Box mt={3}>
