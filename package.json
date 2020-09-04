@@ -1,0 +1,23 @@
+{
+  "name": "openfacilitation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "frontend",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "dev": "cd frontend && next",
+    "deploy": "git push origin main",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xdamman/openfacilitation.git"
+  },
+  "author": "Xavier Damman <@xdamman>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xdamman/openfacilitation/issues"
+  },
+  "homepage": "https://github.com/xdamman/openfacilitation#readme"
+}

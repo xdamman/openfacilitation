@@ -1,7 +1,7 @@
 {
-  "name": "allforclimate-website",
+  "name": "openfacilitation-website",
   "version": "1.0.0",
-  "description": "allforclimate.earth website",
+  "description": "openfacilitation.com website",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AllForClimate/website.git"
+    "url": "git+https://github.com/xdamman/openfacilitation.git"
   },
   "author": "Xavier Damman <@xdamman>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AllForClimate/website/issues"
+    "url": "https://github.com/xdamman/openfacilitation/issues"
   },
-  "homepage": "https://github.com/AllForClimate/website#readme",
+  "homepage": "https://github.com/xdamman/openfacilitation#readme",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@rebass/forms": "^4.0.6",
@@ -27,7 +27,7 @@
     "lodash": "^4.17.15",
     "moment": "^2.25.3",
     "momentjs": "^2.0.0",
-    "next": "^9.4.4",
+    "next": "^9.5.3",
     "node-fetch": "^2.6.0",
     "numeral": "^2.0.6",
     "react": "^16.13.1",

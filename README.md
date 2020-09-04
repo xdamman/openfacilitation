@@ -1,4 +1,5 @@
 # openfacilitation
+
 Directory of facilitators
 
 https://openfacilitation.com
@@ -7,8 +8,6 @@ https://openfacilitation.com
 
 - Record and manage facilitators, their trainings, experiences and clients in an Airtable
 - Frontend to browse the list of facilitators
-
-
 
 ## Forms
 
@@ -24,3 +23,6 @@ https://airtable.com/shrLMURTnEHdKrNQd
 
 https://airtable.com/shry4hbRGeUkqKF2b
 
+## Deploy
+
+Just push to the main branch.
