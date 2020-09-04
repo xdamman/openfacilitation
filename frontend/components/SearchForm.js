@@ -15,16 +15,24 @@ const StyledSelect = (props) => (
   />
 );
 
-export default ({ languages, types, onChange, defaultValue }) => {
+const SearchFormComponent = ({
+  languages,
+  types,
+  cities,
+  onChange,
+  defaultValue,
+}) => {
   defaultValue = defaultValue || {};
 
   const placeholders = {
     language: "Any language",
+    city: "Anywhere",
     type: "Any type of meeting",
   };
 
   const state = {
     language: defaultValue.language,
+    city: defaultValue.city,
     type: defaultValue.type,
   };
 
@@ -47,20 +55,41 @@ export default ({ languages, types, onChange, defaultValue }) => {
     ...languages,
   ];
   const typeOptions = [{ id: null, name: placeholders.type }, ...types];
+  const cityOptions = cities.map((city) => {
+    return { id: city, name: city };
+  });
+  cityOptions.unshift({ id: null, name: placeholders.city });
 
   return (
     <SearchForm>
       <Flex width={1}>
         <Box mr={2}>
           <StyledSelect
+            id="city"
+            name="city"
+            defaultValue={state.city && state.city.toLowerCase()}
+            minWidth="140px"
+            onChange={(e) => handlechange("city", e.target.value)}
+          >
+            {Object.entries(cityOptions).map(([key, city]) => (
+              <option key={key} value={city.name.toLowerCase()}>
+                {city.name}
+              </option>
+            ))}
+          </StyledSelect>
+        </Box>
+        <Box mr={2}>
+          <StyledSelect
             id="language"
             name="language"
-            defaultValue={state.language}
+            defaultValue={state.language && state.language.toLowerCase()}
             minWidth="140px"
             onChange={(e) => handlechange("language", e.target.value)}
           >
             {Object.entries(languageOptions).map(([key, language]) => (
-              <option key={key}>{language.name}</option>
+              <option key={key} value={language.name.toLowerCase()}>
+                {language.name}
+              </option>
             ))}
           </StyledSelect>
         </Box>
@@ -81,3 +110,5 @@ export default ({ languages, types, onChange, defaultValue }) => {
     </SearchForm>
   );
 };
+
+export default SearchFormComponent;

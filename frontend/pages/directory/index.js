@@ -47,13 +47,21 @@ const ResultNumbers = styled.div`
   color: #333;
 `;
 
-export default ({ facilitators, languages, meetingTypes, query }) => {
+const Directory = ({
+  facilitators,
+  languages,
+  meetingTypes,
+  cities,
+  query,
+}) => {
   const router = useRouter();
   const handleChange = (filters) => {
     // console.log(">>> handleChange", filters);
     router.push(
       "/directory/[...filters]",
-      `/directory/${filters.language || "all"}/${filters.type || "any"}`
+      `/directory/${filters.city || "anywhere"}/${filters.language || "all"}/${
+        filters.type || "any"
+      }`
     );
   };
 
@@ -90,6 +98,7 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
         <SearchForm
           languages={languages}
           types={meetingTypes}
+          cities={cities}
           defaultValue={query}
           onChange={(filters) => handleChange(filters)}
         />
@@ -116,6 +125,11 @@ export async function getStaticProps({ params }) {
   console.log(">>> query", query);
   const languages = await getData("Languages");
   const meetingTypes = await getData("Types");
+  const cities = await getData("Facilitators", {
+    view: "Cities",
+    fields: ["Country", "City"],
+    distinct: "City",
+  });
   let facilitators = await getData("Facilitators", query);
   if (facilitators && facilitators.length > 0) {
     facilitators = join(
@@ -129,10 +143,12 @@ export async function getStaticProps({ params }) {
   console.log(`>>> ${facilitators.length} facilitators found`);
 
   return {
-    props: { query, languages, facilitators, meetingTypes },
+    props: { query, languages, facilitators, meetingTypes, cities },
     // we will attempt to re-generate the page:
     // - when a request comes in
     // - at most once every 180 seconds
     revalidate: 180,
   };
 }
+
+export default Directory;

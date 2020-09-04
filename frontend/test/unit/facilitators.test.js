@@ -5,6 +5,7 @@ const languagesData = require("../fixtures/Languages.json");
 const eventsData = require("../fixtures/Events.json");
 const typesData = require("../fixtures/Types.json");
 import { getData, map, join } from "../../lib/data";
+import { get } from "lodash";
 
 const facilitators = facilitatorsData.records.map((r) =>
   map("Facilitators", r)
@@ -86,7 +87,7 @@ describe("join table", () => {
     expect(facilitator.events[0].client[0].name).toEqual("Fridays for Future");
     expect(facilitator.languages.length).toEqual(2);
   });
-  it.only("fetches Mees and join with other tables", async () => {
+  it("fetches Mees and join with other tables", async () => {
     const params = { facilitatorid: "recNTugJhswCLFztA" };
     const languages = await getData("Languages");
     const meetingTypes = await getData("Types");
@@ -124,5 +125,15 @@ describe("join table", () => {
       type: "Team retreats",
     });
     expect(res.length).toEqual(1);
+  });
+
+  it.only("gets the list of cities", async () => {
+    const res = await getData("Facilitators", {
+      view: "Cities",
+      fields: ["Country", "City"],
+      distinct: "City",
+    });
+    expect(res.length).toEqual(3);
+    expect(res[0]).toEqual("Brussels");
   });
 });

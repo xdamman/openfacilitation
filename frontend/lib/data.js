@@ -24,8 +24,15 @@ export async function getData(table, query = {}) {
       `SEARCH('${query.facilitator}', ARRAYJOIN({Facilitators}))`
     );
   }
-  if (query.language && query.language !== "all") {
-    filterByFormula.push(`SEARCH('${query.language}', ARRAYJOIN({Languages}))`);
+  if (query.city && query.city !== "anywhere") {
+    filterByFormula.push(
+      `SEARCH(LOWER('${query.city}'), LOWER(ARRAYJOIN({City})))`
+    );
+  }
+  if (query.language && query.language !== "any") {
+    filterByFormula.push(
+      `SEARCH(LOWER('${query.language}'), LOWER(ARRAYJOIN({Languages})))`
+    );
   }
   if (query.type && query.type !== "any") {
     filterByFormula.push(
@@ -39,8 +46,14 @@ export async function getData(table, query = {}) {
       const filterByFormulaStr = `AND(${filterByFormula.join(", ")})`;
       queryURL += `&filterByFormula=${encodeURIComponent(filterByFormulaStr)}`;
     }
+    if (query.view) {
+      queryURL += `&view=${query.view}`;
+    }
   }
-  // console.log("queryURL", queryURL);
+  if (query.fields) {
+    queryURL += query.fields.map((field) => `&fields%5B%5D=${field}`).join("");
+  }
+  console.log("queryURL", queryURL);
   let json;
   if (!query.id && filterByFormula.length === 0 && mockedData[table]) {
     json = mockedData[table];
@@ -63,6 +76,14 @@ export async function getData(table, query = {}) {
     if (!json.records || json.records.length < 1) {
       console.error("No result for", table);
       return [];
+    }
+
+    if (query.distinct) {
+      const results = {};
+      json.records.map((record) => {
+        results[record.fields[query.distinct]] = true;
+      });
+      return Object.keys(results);
     }
 
     return json.records.map((record) => map(table, record));

@@ -62,7 +62,7 @@ const H2 = styled.h2`
   margin: 40px 0 10px;
 `;
 
-export default () => (
+const Homepage = () => (
   <Body>
     <center>
       <img src="/images/openfacilitation-logo.png" />
@@ -135,3 +135,5 @@ export default () => (
     </center>
   </Body>
 );
+
+export default Homepage;

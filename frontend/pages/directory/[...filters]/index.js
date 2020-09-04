@@ -45,14 +45,21 @@ const ResultNumbers = styled.div`
   color: #333;
 `;
 
-export default ({ facilitators, languages, meetingTypes, query }) => {
+const ResultPage = ({
+  facilitators,
+  languages,
+  meetingTypes,
+  cities,
+  query,
+}) => {
   const router = useRouter();
   const handleChange = (filters) => {
-    // console.log(">>> handleChange", filters);
-    router.push(
-      "/directory/[...filters]",
-      `/directory/${filters.language || "all"}/${filters.type || "any"}`
-    );
+    let route = `/directory/${filters.city || "anywhere"}/${
+      filters.language || "any"
+    }/${filters.type || "any"}`;
+    // route = route.replace(/(\/any(where)?)+$/, "");
+    route = route.replace(/(\/any)+$/, "");
+    router.push("/directory/[...filters]", route);
   };
 
   const hasResults = facilitators && facilitators.length > 0;
@@ -88,6 +95,7 @@ export default ({ facilitators, languages, meetingTypes, query }) => {
         <SearchForm
           languages={languages}
           types={meetingTypes}
+          cities={cities}
           defaultValue={query}
           onChange={(filters) => handleChange(filters)}
         />
@@ -103,16 +111,23 @@ export async function getStaticProps({ params }) {
   const query = {};
   if (params) {
     if (params.filters[0]) {
-      query.language = params.filters[0];
+      query.city = params.filters[0];
     }
     if (params.filters[1]) {
-      query.type = params.filters[1];
+      query.language = params.filters[1];
+    }
+    if (params.filters[2]) {
+      query.type = params.filters[2];
     }
   }
 
-  console.log(">>> query", query);
   const languages = await getData("Languages");
   const meetingTypes = await getData("Types");
+  const cities = await getData("Facilitators", {
+    view: "Cities",
+    fields: ["Country", "City"],
+    distinct: "City",
+  });
 
   let facilitators = await getData("Facilitators", query);
   if (facilitators && facilitators.length > 0) {
@@ -128,7 +143,7 @@ export async function getStaticProps({ params }) {
   console.log(`>>> ${facilitators.length} facilitators found`);
 
   return {
-    props: { query, languages, facilitators, meetingTypes },
+    props: { query, languages, facilitators, meetingTypes, cities },
     // we will attempt to re-generate the page:
     // - when a request comes in
     // - at most once every 180 seconds
@@ -139,12 +154,19 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const languages = await getData("Languages");
   const meetingTypes = await getData("Types");
+  const cities = await getData("Facilitators", {
+    view: "Cities",
+    fields: ["City"],
+    distinct: "City",
+  });
   const paths = [];
-
-  languages.map((l) => {
-    paths.push({ params: { filters: [l.name] } });
-    meetingTypes.map((m) => {
-      paths.push({ params: { filters: [l.name, m.name] } });
+  cities.map((c) => {
+    paths.push({ params: { filters: [c] } });
+    languages.map((l) => {
+      paths.push({ params: { filters: [c, l.name] } });
+      meetingTypes.map((m) => {
+        paths.push({ params: { filters: [c, l.name, m.name] } });
+      });
     });
   });
 
@@ -153,3 +175,5 @@ export async function getStaticPaths() {
     fallback: true,
   };
 }
+
+export default ResultPage;
