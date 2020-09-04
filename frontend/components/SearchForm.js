@@ -62,8 +62,8 @@ const SearchFormComponent = ({
 
   return (
     <SearchForm>
-      <Flex width={1}>
-        <Box mr={2}>
+      <Flex width={1} flexDirection={["column", "row", "row"]}>
+        <Box mr={2} mb={2}>
           <StyledSelect
             id="city"
             name="city"
@@ -78,7 +78,7 @@ const SearchFormComponent = ({
             ))}
           </StyledSelect>
         </Box>
-        <Box mr={2}>
+        <Box mr={2} mb={2}>
           <StyledSelect
             id="language"
             name="language"
@@ -93,7 +93,7 @@ const SearchFormComponent = ({
             ))}
           </StyledSelect>
         </Box>
-        <Box mr={2}>
+        <Box mr={2} mb={2}>
           <StyledSelect
             id="type"
             name="type"

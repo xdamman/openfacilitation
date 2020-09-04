@@ -57,12 +57,12 @@ const Directory = ({
   const router = useRouter();
   const handleChange = (filters) => {
     // console.log(">>> handleChange", filters);
-    router.push(
-      "/directory/[...filters]",
-      `/directory/${filters.city || "anywhere"}/${filters.language || "all"}/${
-        filters.type || "any"
-      }`
-    );
+    let route = `/directory/${filters.city || "anywhere"}/${
+      filters.language || "any"
+    }/${filters.type || "any"}`;
+    // route = route.replace(/(\/any(where)?)+$/, "");
+    route = route.replace(/(\/any)+$/, "");
+    router.push("/directory/[...filters]", route);
   };
 
   const hasResults = facilitators && facilitators.length > 0;
