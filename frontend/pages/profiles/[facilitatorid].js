@@ -9,6 +9,7 @@ import { Avatar } from "../../styles";
 import { pluralize } from "../../lib/helpers";
 import StickyBox from "react-sticky-box";
 import FooterButton from "../../components/FooterButton";
+import Markdown from "react-markdown";
 
 const Body = styled.div`
   width: 100%;
@@ -48,6 +49,13 @@ export default ({ facilitator }) => {
         <Box my={4} mx={2}>
           <Description>{facilitator.description}</Description>
         </Box>
+        {facilitator.longDescription && (
+          <Box my={4} mx={2}>
+            <Description>
+              <Markdown source={facilitator.longDescription} />
+            </Description>
+          </Box>
+        )}
         <Flex flexDirection="column">
           <Tags
             array={facilitator.meetingTypes}

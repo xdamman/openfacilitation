@@ -71,9 +71,10 @@ const Homepage = () => (
         <H2>Find a facilitator for your next event</H2>
         <p>
           Whether you are organising a general assembly online or offline, a
-          brainstorming, a team building or team retreat, we can help you find
-          the right person. Browse our directory or directly submit a request
-          for your event.
+          brainstorming, a team building or retreat, we can help you find the
+          right person. Browse our directory or directly{" "}
+          <Link href="/request">submit a request</Link> for your event. Based on
+          your request we will look for the best facilitator for your needs
         </p>
         <Flex justifyContent="center">
           <Button
@@ -88,23 +89,27 @@ const Homepage = () => (
 
         <H2>A Community of Facilitators</H2>
         <p>
-          We are facilitators and while we love what we do, we find it difficult
-          to make a living with it. So we decided to get together to build a
-          directory of facilitators, improve our visibility and make it easier
-          for potential customers to hire one of us based on their needs.
+          Facilitators are passionate about helping groups/teams reach their
+          full potential. They are experts in creating and moderating spaces
+          where people can meet, work, solve conflicts or take decisions
+          together. They have a feel for group dynamics and are excellent
+          listeners.
         </p>
         <p>
-          Facilitators help groups reach their full potential. They are experts
-          in creating and moderating spaces where people can meet, work, solve
-          conflicts or take decisions together. To promote this work and improve
-          our visibility, we decided to build a directory of facilitators. It
-          will make it easier to find a facilitator and hire one of us.
+          To promote their work and improve their visibility, we built a
+          directory of facilitators. All facilitators have their own style and
+          expertise. This directory will make it easier to find the right
+          facilitator and to hire one of us.
         </p>
 
         <H2>Join our community</H2>
         <p>
           Are you a facilitator? Join our community to increase your visibility,
-          learn from fellow facilitators and find new opportunities.
+          learn from fellow facilitators and find new opportunities.{" "}
+          <Link href="https://docs.openfacilitation.com/membership">
+            More information about membership plans
+          </Link>
+          .
           <Flex justifyContent="center">
             <Box mt={3}>
               <Button
@@ -121,16 +126,18 @@ const Homepage = () => (
       </About>
 
       <Footer>
-        <Label>Find us on:</Label>
-        <FooterLink href="https://opencollective.com/openfacilitation">
-          Open Collective
+        <FooterLink href="https://docs.openfacilitation.com">
+          Documentation
         </FooterLink>
-        <FooterLink href="https://github.com/xdamman/openfacilitation">
-          GitHub
+        <FooterLink href="https://docs.openfacilitation.com/membership">
+          Membership
+        </FooterLink>
+        <FooterLink href="https://www.facebook.com/Open-Facilitation-107301451109828/">
+          Facebook Page
         </FooterLink>
         <FooterLink href="mailto:info@openfacilitation.com">Email</FooterLink>
         <br />
-        <Fineprint>Open Facilitation, xdamman SPRL, Brussels</Fineprint>
+        <Fineprint>Open Facilitation</Fineprint>
       </Footer>
     </center>
   </Body>

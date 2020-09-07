@@ -129,6 +129,7 @@ export function map(template, data) {
       name: "fields.Name",
       email: "fields.Email",
       description: "fields.Description",
+      longDescription: "fields.LongDescription",
       gender: "fields.Gender",
       city: "fields.City",
       country: "fields.Country",

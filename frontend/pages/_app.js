@@ -2,6 +2,9 @@ import App from "next/app";
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
+import { purple } from "@material-ui/core/colors";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,6 +20,18 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // Purple and green play nicely together.
+      main: "rgb(51,134,255)",
+    },
+    secondary: {
+      main: "rgb(153,202,255)",
+    },
+  },
+});
+
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
@@ -29,7 +44,9 @@ class MyApp extends App {
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
           />
         </Head>
-        <Component {...pageProps} />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
         <GlobalStyle />
       </>
     );
