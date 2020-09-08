@@ -77,7 +77,7 @@ const Directory = ({
               {facilitators.length > 1 ? "s" : ""} found
             </ResultNumbers>
           </Box>
-          <Flex flexWrap="wrap">
+          <Flex flexWrap="wrap" mb={5}>
             {facilitators.map((node, i) => (
               <Link href={`/profiles/${node.id}`} key={i}>
                 <A>

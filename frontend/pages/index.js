@@ -74,7 +74,7 @@ const Homepage = () => (
           brainstorming, a team building or retreat, we can help you find the
           right person. Browse our directory or directly{" "}
           <Link href="/request">submit a request</Link> for your event. Based on
-          your request we will look for the best facilitator for your needs
+          your request we will look for the best facilitator for your needs.
         </p>
         <Flex justifyContent="center">
           <Button
