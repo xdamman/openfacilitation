@@ -130,6 +130,7 @@ export function map(template, data) {
       email: "fields.Email",
       description: "fields.Description",
       longDescription: "fields.LongDescription",
+      website: "fields.Website",
       gender: "fields.Gender",
       city: "fields.City",
       country: "fields.Country",

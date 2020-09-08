@@ -10,6 +10,7 @@ import { pluralize } from "../../lib/helpers";
 import StickyBox from "react-sticky-box";
 import FooterButton from "../../components/FooterButton";
 import Markdown from "react-markdown";
+import Link from "next/link";
 
 const Body = styled.div`
   width: 100%;
@@ -37,6 +38,7 @@ export default ({ facilitator }) => {
   if (!facilitator) {
     return <div></div>;
   }
+
   return (
     <Body>
       <center>
@@ -48,14 +50,12 @@ export default ({ facilitator }) => {
         </Box>
         <Box my={4} mx={2}>
           <Description>{facilitator.description}</Description>
+          {facilitator.website && (
+            <Box my={1} mx={2}>
+              <Link href={facilitator.website}>{facilitator.website}</Link>
+            </Box>
+          )}
         </Box>
-        {facilitator.longDescription && (
-          <Box my={4} mx={2}>
-            <Description>
-              <Markdown source={facilitator.longDescription} />
-            </Description>
-          </Box>
-        )}
         <Flex flexDirection="column">
           <Tags
             array={facilitator.meetingTypes}
@@ -65,6 +65,14 @@ export default ({ facilitator }) => {
               justifyContent: "center",
             }}
           />
+          {facilitator.longDescription &&
+            facilitator.longDescription.length > 2 && (
+              <Box my={4} mx={2}>
+                <Description>
+                  <Markdown source={facilitator.longDescription} />
+                </Description>
+              </Box>
+            )}
           {facilitator.events && facilitator.events.length > 0 && (
             <Box>
               <H2>
@@ -77,7 +85,7 @@ export default ({ facilitator }) => {
           {facilitator.email && (
             <Box mt={4} mb={6}>
               <FooterButton
-                label="Get in touch"
+                label={`Get in touch with ${facilitator.name}`}
                 href={`mailto:${facilitator.email}?subject=${encodeURIComponent(
                   "Get in touch via openfacilitation.com"
                 )}`}
