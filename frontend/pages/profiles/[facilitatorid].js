@@ -12,9 +12,9 @@ import FooterButton from "../../components/FooterButton";
 import Markdown from "react-markdown";
 import Link from "next/link";
 
-const Body = styled.div`
+const Page = styled.div`
   width: 100%;
-  max-width: 900px;
+  max-width: 660px;
   margin: 0 auto;
   padding: 0;
   font-family: Content-font, Roboto, sans-serif;
@@ -40,7 +40,7 @@ export default ({ facilitator }) => {
   }
 
   return (
-    <Body>
+    <Page>
       <center>
         <StickyBox>
           <Topbar title={facilitator.name} />
@@ -94,7 +94,7 @@ export default ({ facilitator }) => {
           )}
         </Flex>
       </center>
-    </Body>
+    </Page>
   );
 };
 

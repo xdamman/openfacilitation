@@ -8,6 +8,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import FooterButton from "../../components/FooterButton";
 
+const Page = styled.div`
+  max-width: 660px;
+  margin: 0 auto;
+`;
+
 const A = styled.a`
   text-decoration: none;
   display: block;
@@ -92,7 +97,7 @@ const Directory = ({
   );
 
   return (
-    <>
+    <Page>
       <Topbar title="Find a facilitator" />
       <Box ml={2}>
         <SearchForm
@@ -105,7 +110,7 @@ const Directory = ({
       </Box>
       <Box mt={4}>{results}</Box>
       <FooterButton label="Submit a request" href="/request" />
-    </>
+    </Page>
   );
 };
 

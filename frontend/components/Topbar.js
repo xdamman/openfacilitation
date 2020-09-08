@@ -33,8 +33,11 @@ export default ({ title }) => {
       <Flex alignItems="center">
         <Box mt={1} mr={2}>
           <Link href="/">
-            <A>
-              <Logo src="/images/openfacilitation-logo.png" />
+            <A title="Go back to openfacilitation.com">
+              <Logo
+                src="/images/openfacilitation-logo.png"
+                alt="openfacilitation logo"
+              />
             </A>
           </Link>
         </Box>

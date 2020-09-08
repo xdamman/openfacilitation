@@ -6,6 +6,12 @@ import { Flex, Box } from "rebass";
 import { getData, join } from "../../../lib/data";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import FooterButton from "../../../components/FooterButton";
+
+const Page = styled.div`
+  max-width: 660px;
+  margin: 0 auto;
+`;
 
 const A = styled.a`
   text-decoration: none;
@@ -89,7 +95,7 @@ const ResultPage = ({
   );
 
   return (
-    <>
+    <Page>
       <Topbar title="Find a facilitator" />
       <Box ml={2}>
         <SearchForm
@@ -101,7 +107,8 @@ const ResultPage = ({
         />
       </Box>
       <Box mt={4}>{results}</Box>
-    </>
+      <FooterButton label="Submit a request" href="/request" />
+    </Page>
   );
 };
 
