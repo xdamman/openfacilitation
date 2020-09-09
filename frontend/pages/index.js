@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@material-ui/core";
 import { Flex, Box } from "rebass";
 import { space, layout, typography } from "styled-system";
+import Head from "next/head";
 
 const Page = styled.div`
   max-width: 660px;
@@ -111,6 +112,17 @@ const MenuItem = styled.li`
 
 const Homepage = () => (
   <>
+    <Head>
+      <title>Open Facilitation: find a facilitor for your next event</title>
+      <meta
+        name="description"
+        content="Directory of facilitators for your online/offline needs"
+      />
+      <meta
+        property="og:image"
+        content="/images/openfacilitation-preview.jpg"
+      />
+    </Head>
     <Cover>
       <picture>
         <source

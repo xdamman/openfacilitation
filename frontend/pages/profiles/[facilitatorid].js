@@ -11,6 +11,7 @@ import StickyBox from "react-sticky-box";
 import FooterButton from "../../components/FooterButton";
 import Markdown from "react-markdown";
 import Link from "next/link";
+import Head from "next/head";
 
 const Page = styled.div`
   width: 100%;
@@ -41,6 +42,17 @@ export default ({ facilitator }) => {
 
   return (
     <Page>
+      <Head>
+        <title>{facilitator.name} - Open Facilitation</title>
+        <meta
+          name="description"
+          content="Directory of facilitators for your online/offline needs"
+        />
+        <meta
+          property="og:image"
+          content="/images/openfacilitation-preview.jpg"
+        />
+      </Head>
       <center>
         <StickyBox>
           <Topbar title={facilitator.name} />

@@ -7,6 +7,7 @@ import { getData, join } from "../../../lib/data";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import FooterButton from "../../../components/FooterButton";
+import Head from "next/head";
 
 const Page = styled.div`
   max-width: 660px;
@@ -96,6 +97,17 @@ const ResultPage = ({
 
   return (
     <Page>
+      <Head>
+        <title>Open Facilitation: find a facilitor for your next event</title>
+        <meta
+          name="description"
+          content="Directory of facilitators for your online/offline needs"
+        />
+        <meta
+          property="og:image"
+          content="/images/openfacilitation-preview.jpg"
+        />
+      </Head>
       <Topbar title="Find a facilitator" />
       <Box ml={2}>
         <SearchForm
