@@ -107,7 +107,7 @@ const Directory = ({
         />
         <meta
           property="og:image"
-          content="/images/openfacilitation-preview.jpg"
+          content="https://openfacilitation.com/images/openfacilitation-preview.jpg"
         />
       </Head>
       <Topbar title="Find a facilitator" />
