@@ -78,7 +78,7 @@ const Cover = styled.div`
   position: relative;
   & picture img {
     width: 100%;
-    filter: brightness(0.6);
+    filter: brightness(0.8);
     transform: scale(1);
   }
   margin-bottom: 0px;
@@ -88,6 +88,7 @@ const Topbar = styled.div`
   top: -8px;
   position: absolute;
   backdrop-filter: blur(2px);
+  background: rgba(255, 255, 255, 0.2);
   width: 100%;
   height: 100%;
 `;
