@@ -2,7 +2,7 @@ import App from "next/app";
 import React from "react";
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import { purple } from "@material-ui/core/colors";
 
@@ -22,10 +22,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const theme = createMuiTheme({
+let theme = createMuiTheme({
   palette: {
+    white: {
+      main: "rgb(255,255,255)",
+    },
     primary: {
-      // Purple and green play nicely together.
       main: "rgb(51,134,255)",
     },
     secondary: {
@@ -33,6 +35,8 @@ const theme = createMuiTheme({
     },
   },
 });
+
+theme = responsiveFontSizes(theme);
 
 class MyApp extends App {
   render() {

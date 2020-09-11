@@ -58,27 +58,38 @@ const Fineprint = styled.span`
   margin-right: 20px;
 `;
 
-const H2 = styled.h2`
+const H2 = styled.h2(
+  {
+    fontSize: "24px",
+    color: "white",
+    fontWeight: 300,
+    margin: "0px 0 40px",
+  },
+  typography
+);
+
+const H3 = styled.h2`
   font-size: 24px;x
   font-weight: 700;
   margin: 40px 0 10px;
 `;
 
 const Cover = styled.div`
+  position: relative;
   & picture img {
     width: 100%;
-    filter: blur(0px);
-    transform: scale(1.1);
+    filter: brightness(0.6);
+    transform: scale(1);
   }
   margin-bottom: 0px;
 `;
 
 const Topbar = styled.div`
-  position: fixed;
-  top: 0px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(15px);
+  top: -8px;
+  position: absolute;
+  backdrop-filter: blur(2px);
   width: 100%;
+  height: 100%;
 `;
 
 const Logo = styled.div``;
@@ -139,39 +150,45 @@ const Homepage = () => (
         />
       </picture>
       <Topbar>
-        <Flex justifyContent="space-between" alignItems="center">
+        <Flex
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+          height="85%"
+        >
           <Logo>
             <Flex alignItems="center">
               <LogoIcon
                 src="/images/openfacilitation-logo.png"
-                width={[32, 48, 64]}
+                width={[48, 64, 80]}
                 ml={[2, 3]}
                 mr={[1, 1]}
               />
-              <Box fontSize={["10px", "14px", "16px"]}>
+              <Box fontSize={["16px", "22px", "34px"]}>
                 <Logotype>
                   Open <strong>Facilitation</strong>
                 </Logotype>
               </Box>
             </Flex>
           </Logo>
-          <Box display={["none", "block", "block"]}>
-            <Menu fontSize={"18px"}>
-              <MenuItem>
-                <Link href="/directory">Directory</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link href="https://docs.openfacilitation.com">About</Link>
-              </MenuItem>
-            </Menu>
-          </Box>
+          <H2 fontSize={["18px", "20px", "28px"]}>
+            Find a facilitator for your next event
+          </H2>
+          <Button
+            color="primary"
+            variant="contained"
+            href="/directory"
+            size="medium"
+            disableElevation
+          >
+            Directory of facilitators
+          </Button>
         </Flex>
       </Topbar>
     </Cover>
     <Page>
       <center>
         <About>
-          <H2>Find a facilitator for your next event</H2>
           <p>
             Whether you are organising a general assembly online or offline, a
             brainstorming, a team building or retreat, we can help you find the
@@ -180,18 +197,8 @@ const Homepage = () => (
             on your request we will look for the best facilitator for your
             needs.
           </p>
-          <Flex justifyContent="center">
-            <Button
-              color="primary"
-              variant="contained"
-              href="/directory"
-              disableElevation
-            >
-              Directory of facilitators
-            </Button>
-          </Flex>
 
-          <H2>A Community of Facilitators</H2>
+          <H3>A Community of Facilitators</H3>
           <p>
             Facilitators are passionate about helping groups/teams reach their
             full potential. They are experts in creating and moderating spaces
@@ -206,7 +213,7 @@ const Homepage = () => (
             facilitator and to hire one of us.
           </p>
 
-          <H2>Join our community</H2>
+          <H3>Join our community</H3>
           <p>
             Are you a facilitator? Join our community to increase your
             visibility, learn from fellow facilitators and find new
