@@ -63,7 +63,7 @@ const H2 = styled.h2(
     fontSize: "24px",
     color: "white",
     fontWeight: 300,
-    margin: "0px 0 40px",
+    margin: "-20px 0 40px 0",
   },
   typography
 );
@@ -78,8 +78,8 @@ const Cover = styled.div`
   position: relative;
   & picture img {
     width: 100%;
-    filter: brightness(0.8);
-    transform: scale(1);
+    // filter: brightness(0.8);
+    // transform: scale(1);
   }
   margin-bottom: 0px;
 `;
@@ -87,13 +87,15 @@ const Cover = styled.div`
 const Topbar = styled.div`
   top: -8px;
   position: absolute;
-  backdrop-filter: blur(2px);
-  background: rgba(255, 255, 255, 0.2);
+  // backdrop-filter: blur(2px);
+  // background: rgba(255, 255, 255, 0.2);
   width: 100%;
   height: 100%;
 `;
 
-const Logo = styled.div``;
+const Logo = styled.div`
+  margin-top: -30px;
+`;
 
 const LogoIcon = styled.img({}, space, layout);
 
