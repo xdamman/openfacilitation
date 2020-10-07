@@ -35,7 +35,7 @@ export default ({ title }) => {
           <Link href="/">
             <A title="Go back to openfacilitation.com">
               <Logo
-                src="/images/openfacilitation-logo.png"
+                src="/images/openfacilitation-logo.svg"
                 alt="openfacilitation logo"
               />
             </A>

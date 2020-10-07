@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from "next/link";
 import { Button } from "@material-ui/core";
 import { Flex, Box } from "rebass";
 import { space, layout, typography } from "styled-system";
@@ -42,6 +41,16 @@ const About = styled.div`
 
 const Footer = styled.div({}, space);
 
+const FooterLinks = styled.div(
+  {
+    display: "flex",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  space
+);
+
 const FooterLink = styled.a`
   text-decoration: none;
   margin-right: 20px;
@@ -62,11 +71,13 @@ const H2 = styled.h2(
   {
     fontSize: "24px",
     color: "white",
-    fontWeight: 300,
-    margin: "-20px 0 40px 0",
+    fontWeight: 600,
   },
-  typography
+  typography,
+  space
 );
+
+const P = styled.p({ fontWeight: 300 }, typography);
 
 const H3 = styled.h2`
   font-size: 24px;x
@@ -81,26 +92,39 @@ const Cover = styled.div`
     // filter: brightness(0.8);
     // transform: scale(1);
   }
-  margin-bottom: 0px;
 `;
 
+const CoverText = styled.div(
+  {
+    boxSizing: "border-box",
+    borderRadius: "0 5px 5px 0",
+    justifyContent: "center",
+    color: "white",
+    alignItems: "center",
+    flexDirection: "column",
+    position: "absolute",
+    top: 0,
+    backdropFilter: "blur(2px)",
+    background: "rgba(0, 0, 0, 0.3)",
+  },
+  space,
+  layout
+);
+
 const Topbar = styled.div`
-  top: -8px;
-  position: absolute;
-  // backdrop-filter: blur(2px);
-  // background: rgba(255, 255, 255, 0.2);
   width: 100%;
+  padding: 5px;
   height: 100%;
 `;
 
-const Logo = styled.div`
-  margin-top: -30px;
-`;
+const Logo = styled.div``;
 
 const LogoIcon = styled.img({}, space, layout);
 
 const Logotype = styled.h1`
-  color: white;
+  font-weight: 300;
+  margin: 2px 0 0 0;
+  color: black;
   & strong {
     color: rgb(51, 134, 255);
   }
@@ -137,6 +161,23 @@ const Homepage = () => (
         content="https://openfacilitation.com/images/openfacilitation-preview.jpg"
       />
     </Head>
+    <Topbar>
+      <Logo>
+        <Flex alignItems="center">
+          <LogoIcon
+            src="/images/openfacilitation-logo.svg"
+            width={[48, 52, 64]}
+            ml={[2, 3]}
+            mr={[1, 1]}
+          />
+          <Box fontSize={["12px", "14px", "16px"]}>
+            <Logotype>
+              Open <strong>Facilitation</strong>
+            </Logotype>
+          </Box>
+        </Flex>
+      </Logo>
+    </Topbar>
     <Cover>
       <picture>
         <source
@@ -152,55 +193,34 @@ const Homepage = () => (
           src="/images/openfacilitation-cover.jpg"
         />
       </picture>
-      <Topbar>
-        <Flex
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          height="85%"
+      <CoverText
+        mt={[0, 5, 5]}
+        ml={0}
+        width={["100%", "50%", "40%"]}
+        p={[3, 3, 4]}
+      >
+        <H2 fontSize={["18px", "20px", "28px"]} my={[2, 2, 3]}>
+          Find a facilitator for your next event
+        </H2>
+        <P fontSize={["13px", "14px", "16px"]}>
+          Whether you are organising a general assembly online or offline, a
+          brainstorming, a team building or retreat, we can help you find the
+          right person.
+        </P>
+        <Button
+          color="primary"
+          variant="contained"
+          href="/request"
+          size="medium"
+          disableElevation
         >
-          <Logo>
-            <Flex alignItems="center">
-              <LogoIcon
-                src="/images/openfacilitation-logo.png"
-                width={[48, 64, 80]}
-                ml={[2, 3]}
-                mr={[1, 1]}
-              />
-              <Box fontSize={["16px", "22px", "34px"]}>
-                <Logotype>
-                  Open <strong>Facilitation</strong>
-                </Logotype>
-              </Box>
-            </Flex>
-          </Logo>
-          <H2 fontSize={["18px", "20px", "28px"]}>
-            Find a facilitator for your next event
-          </H2>
-          <Button
-            color="primary"
-            variant="contained"
-            href="/directory"
-            size="medium"
-            disableElevation
-          >
-            Directory of facilitators
-          </Button>
-        </Flex>
-      </Topbar>
+          Post your request
+        </Button>
+      </CoverText>
     </Cover>
     <Page>
       <center>
         <About>
-          <p>
-            Whether you are organising a general assembly online or offline, a
-            brainstorming, a team building or retreat, we can help you find the
-            right person. Browse our directory or directly{" "}
-            <Link href="/request">submit a request</Link> for your event. Based
-            on your request we will look for the best facilitator for your
-            needs.
-          </p>
-
           <H3>A Community of Facilitators</H3>
           <p>
             Facilitators are passionate about helping groups/teams reach their
@@ -215,16 +235,20 @@ const Homepage = () => (
             expertise. This directory will make it easier to find the right
             facilitator and to hire one of us.
           </p>
+          <Button
+            color="primary"
+            variant="outlined"
+            href="/directory"
+            disableElevation
+          >
+            Browse the directory
+          </Button>
 
           <H3>Join our community</H3>
           <p>
             Are you a facilitator? Join our community to increase your
             visibility, learn from fellow facilitators and find new
-            opportunities.{" "}
-            <Link href="https://docs.openfacilitation.com/membership">
-              More information about membership plans
-            </Link>
-            .
+            opportunities.
             <Flex justifyContent="center">
               <Box mt={3}>
                 <Button
@@ -233,7 +257,7 @@ const Homepage = () => (
                   href="/join"
                   disableElevation
                 >
-                  Apply to join our collective
+                  REGISTER AS A FACILITATOR
                 </Button>
               </Box>
             </Flex>
@@ -241,17 +265,22 @@ const Homepage = () => (
         </About>
 
         <Footer mt={60}>
-          <FooterLink href="https://docs.openfacilitation.com">
-            Documentation
-          </FooterLink>
-          <FooterLink href="https://docs.openfacilitation.com/membership">
-            Membership
-          </FooterLink>
-          <FooterLink href="https://www.facebook.com/Open-Facilitation-107301451109828/">
-            Facebook
-          </FooterLink>
-          <FooterLink href="mailto:info@openfacilitation.com">Email</FooterLink>
-          <br />
+          <FooterLinks>
+            <FooterLink href="https://docs.openfacilitation.com">
+              Documentation
+            </FooterLink>
+            <FooterLink href="https://docs.openfacilitation.com/membership">
+              Membership
+            </FooterLink>
+            <FooterLink href="/directory">Directory</FooterLink>
+            <FooterLink href="https://www.facebook.com/Open-Facilitation-107301451109828/">
+              Facebook
+            </FooterLink>
+            <FooterLink href="mailto:info@openfacilitation.com">
+              Email
+            </FooterLink>
+          </FooterLinks>
+
           <Fineprint>Open Facilitation</Fineprint>
         </Footer>
       </center>

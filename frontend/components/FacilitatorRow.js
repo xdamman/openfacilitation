@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Flex, Box } from "rebass";
 import numeral from "../lib/numeral";
-import { Icon, Avatar } from "../styles";
+import { Icon } from "../styles";
+import Avatar from "../components/Avatar";
 import Tags from "./Tags";
 
 const Row = styled.div`

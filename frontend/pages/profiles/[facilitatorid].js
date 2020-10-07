@@ -5,7 +5,7 @@ import { getData, join } from "../../lib/data";
 import Tags from "../../components/Tags";
 import Topbar from "../../components/Topbar";
 import Events from "../../components/Events";
-import { Avatar } from "../../styles";
+import { Avatar } from "../../components/Avatar";
 import { pluralize } from "../../lib/helpers";
 import StickyBox from "react-sticky-box";
 import FooterButton from "../../components/FooterButton";
@@ -58,7 +58,7 @@ export default ({ facilitator }) => {
           <Topbar title={facilitator.name} />
         </StickyBox>
         <Box my={5}>
-          <Avatar src={facilitator.picture.large} />
+          <Avatar src={facilitator.picture.large} width={128} />
         </Box>
         <Box my={4} mx={2}>
           <Description>{facilitator.description}</Description>

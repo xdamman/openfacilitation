@@ -6,9 +6,3 @@ export const Icon = styled.img`
   margin-right: 5px;
   float: left;
 `;
-
-export const Avatar = styled.img`
-  border-radius: 50%;
-  border: 3px solid #9ccafe;
-  max-height: 128px;
-`;
