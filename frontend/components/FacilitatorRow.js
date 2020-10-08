@@ -4,6 +4,7 @@ import numeral from "../lib/numeral";
 import { Icon } from "../styles";
 import Avatar from "../components/Avatar";
 import Tags from "./Tags";
+import Link from "next/link";
 
 const Row = styled.div`
   width: 100%;
@@ -30,9 +31,14 @@ const Description = styled.p`
 
 const A = styled.a`
   text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  width: 100%;
   &:hover {
     > div {
-      border: 1px solid red;
+      border-radius: 5px;
+      background: #eee;
     }
   }
 `;
@@ -60,42 +66,47 @@ function showData(data) {
 }
 
 export default ({ data }) => {
+  const href = data.slug ? `/${data.slug}` : `/profiles/${data.id}`;
   return (
     <Box mx={1}>
-      <Row>
-        <Flex>
-          <div>
-            <Avatar
-              src={data.picture.large || "/images/avatar.png"}
-              width={64}
-            />
-          </div>
-          <Box ml={2}>
-            <H1>{data.name}</H1>
-            <Metadata>
-              {data.city && (
-                <div>
-                  <Icon src="/images/icons/location.png" />
-                  {data.city}
-                </div>
-              )}
-              {data.languages && (
-                <div>
-                  <Icon src="/images/icons/lang.png" />
-                  {data.languages.join(", ")}
-                </div>
-              )}
-              {data.meetingTypes && (
-                <MeetingTypes>
-                  <Icon src="/images/icons/zoom.png" />
-                  <Tags array={data.meetingTypes} />
-                </MeetingTypes>
-              )}
-            </Metadata>
-            <Description>{data.description}</Description>
-          </Box>
-        </Flex>
-      </Row>
+      <Link href={href}>
+        <A>
+          <Row>
+            <Flex>
+              <div>
+                <Avatar
+                  src={data.picture.large || "/images/avatar.png"}
+                  width={64}
+                />
+              </div>
+              <Box ml={2}>
+                <H1>{data.name}</H1>
+                <Metadata>
+                  {data.city && (
+                    <div>
+                      <Icon src="/images/icons/location.png" />
+                      {data.city}
+                    </div>
+                  )}
+                  {data.languages && (
+                    <div>
+                      <Icon src="/images/icons/lang.png" />
+                      {data.languages.join(", ")}
+                    </div>
+                  )}
+                  {data.meetingTypes && (
+                    <MeetingTypes>
+                      <Icon src="/images/icons/zoom.png" />
+                      <Tags array={data.meetingTypes} />
+                    </MeetingTypes>
+                  )}
+                </Metadata>
+                <Description>{data.description}</Description>
+              </Box>
+            </Flex>
+          </Row>
+        </A>
+      </Link>
     </Box>
   );
 };

@@ -87,6 +87,7 @@ describe("join table", () => {
     expect(facilitator.events[0].client[0].name).toEqual("Fridays for Future");
     expect(facilitator.languages.length).toEqual(2);
   });
+
   it("fetches Mees and join with other tables", async () => {
     const params = { facilitatorid: "recNTugJhswCLFztA" };
     const languages = await getData("Languages");
@@ -119,6 +120,40 @@ describe("join table", () => {
     expect(facilitator.events).toBeNull();
     expect(facilitator.languages.length).toEqual(2);
   });
+
+  it.only("fetches facilitator by slug and join with other tables", async () => {
+    const params = { slug: "xavierdamman" };
+    // const languages = await getData("Languages");
+    // const meetingTypes = await getData("Types");
+    let facilitator = await getData("Facilitators", {
+      slug: params.slug,
+    });
+
+    // const eventsTable = await getData("Events", {
+    //   facilitator: facilitator.name,
+    // });
+    // const clients = await getData("Clients", {
+    //   facilitator: facilitator.name,
+    // });
+    // console.log(">>> eventsTable", eventsTable);
+    // console.log(">>> clients", clients);
+    // const events = join(eventsTable, "client", clients);
+    // console.log(">>> events", events);
+    // facilitator = join(
+    //   join(
+    //     join([facilitator], "languages", languages, "name"),
+    //     "meetingTypes",
+    //     meetingTypes,
+    //     "name"
+    //   ),
+    //   "events",
+    //   events
+    // )[0];
+    console.log(JSON.stringify(facilitator, null, "  "));
+    // expect(facilitator.events).toBeNull();
+    // expect(facilitator.languages.length).toEqual(2);
+  });
+
   it("filters the facilitators by language and type", async () => {
     const res = await getData("Facilitators", {
       language: "French",
@@ -127,7 +162,7 @@ describe("join table", () => {
     expect(res.length).toEqual(1);
   });
 
-  it.only("gets the list of cities", async () => {
+  it("gets the list of cities", async () => {
     const res = await getData("Facilitators", {
       view: "Cities",
       fields: ["Country", "City"],

@@ -4,7 +4,6 @@ import SearchForm from "../../../components/SearchForm";
 import FacilitatorRow from "../../../components/FacilitatorRow";
 import { Flex, Box } from "rebass";
 import { getData, join } from "../../../lib/data";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import FooterButton from "../../../components/FooterButton";
 import Head from "next/head";
@@ -12,16 +11,6 @@ import Head from "next/head";
 const Page = styled.div`
   max-width: 660px;
   margin: 0 auto;
-`;
-
-const A = styled.a`
-  text-decoration: none;
-  display: block;
-  width: 100%;
-  cursor: pointer;
-  &:hover {
-    background: #eee;
-  }
 `;
 
 const About = styled.div`
@@ -83,11 +72,7 @@ const ResultPage = ({
           </Box>
           <Flex flexWrap="wrap" mb={5}>
             {facilitators.map((node, i) => (
-              <Link href={`/profiles/${node.id}`} key={i}>
-                <A>
-                  <FacilitatorRow data={node} />
-                </A>
-              </Link>
+              <FacilitatorRow data={node} key={i} />
             ))}
           </Flex>
         </>

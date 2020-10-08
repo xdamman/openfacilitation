@@ -24,6 +24,9 @@ export async function getData(table, query = {}) {
       `SEARCH('${query.facilitator}', ARRAYJOIN({Facilitators}))`
     );
   }
+  if (query.slug) {
+    filterByFormula.push(`LOWER('${query.slug}') = LOWER({Slug})`);
+  }
   if (query.city && query.city !== "anywhere") {
     filterByFormula.push(
       `SEARCH(LOWER('${query.city}'), LOWER(ARRAYJOIN({City})))`
@@ -53,7 +56,7 @@ export async function getData(table, query = {}) {
   if (query.fields) {
     queryURL += query.fields.map((field) => `&fields%5B%5D=${field}`).join("");
   }
-  console.log("queryURL", queryURL);
+  console.log("queryURL", queryURL, "formula:", filterByFormula);
   let json;
   if (!query.id && filterByFormula.length === 0 && mockedData[table]) {
     json = mockedData[table];
@@ -63,7 +66,7 @@ export async function getData(table, query = {}) {
       headers: { Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}` },
     });
     json = await res.json();
-    // console.log(">>> JSON", JSON.stringify(json, null, "  "));
+    console.log(">>> JSON", JSON.stringify(json, null, "  "));
   }
 
   if (!json) {
@@ -72,6 +75,8 @@ export async function getData(table, query = {}) {
   }
   if (query.id) {
     return map(table, json);
+  } else if (query.slug) {
+    return map(table, json.records[0]);
   } else {
     if (!json.records || json.records.length < 1) {
       console.error("No result for", table);
@@ -126,6 +131,7 @@ export function map(template, data) {
     },
     Facilitators: {
       id: "id",
+      slug: "fields.Slug",
       name: "fields.Name",
       email: "fields.Email",
       description: "fields.Description",
