@@ -35,7 +35,7 @@ const Description = styled.p`
   margin: 10px;
 `;
 
-export default ({ facilitator }) => {
+const Component = ({ facilitator }) => {
   if (!facilitator) {
     return <div></div>;
   }
@@ -167,3 +167,5 @@ export async function getStaticPaths() {
     fallback: true,
   };
 }
+
+export default Component;

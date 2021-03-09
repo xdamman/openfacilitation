@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { Flex, Box } from 'rebass';
-import moment from 'moment';
+import styled from "styled-components";
+import { Flex, Box } from "rebass";
+import moment from "moment";
 
 const Update = styled.div`
   width: 100%;
@@ -19,8 +19,7 @@ const FromCollective = styled.div`
   }
 `;
 
-const UpdateContent = styled.div`
-`;
+const UpdateContent = styled.div``;
 
 const Metadata = styled.span`
   color: #555;
@@ -53,7 +52,7 @@ const A = styled.a`
   text-decoration: none;
 `;
 
-export default ({ data }) => {
+const Component = ({ data }) => {
   return (
     <Update>
       <Flex justifyContent="flex-start">
@@ -63,13 +62,21 @@ export default ({ data }) => {
           </A>
         </FromCollective>
         <UpdateContent>
-          <A href={`https://opencollective.com/${data.collective.slug}/updates/${data.slug}`}>
-          <Title>{data.title}</Title>
+          <A
+            href={`https://opencollective.com/${data.collective.slug}/updates/${data.slug}`}
+          >
+            <Title>{data.title}</Title>
           </A>
-          <Metadata>{moment(data.time).format('MMMM Do YYYY')}, {data.collective.name}</Metadata>
-          <Description><div dangerouslySetInnerHTML={{ __html: data.summary }} /></Description>
+          <Metadata>
+            {moment(data.time).format("MMMM Do YYYY")}, {data.collective.name}
+          </Metadata>
+          <Description>
+            <div dangerouslySetInnerHTML={{ __html: data.summary }} />
+          </Description>
         </UpdateContent>
       </Flex>
     </Update>
-  )
-}
+  );
+};
+
+export default Component;

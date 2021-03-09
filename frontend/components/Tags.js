@@ -10,7 +10,7 @@ const Tag = styled.div`
   font-size: 9pt;
 `;
 
-export default ({ array, styles }) => {
+const Component = ({ array, styles }) => {
   if (!array || array.length === 0) return <span />;
   return (
     <div style={styles}>
@@ -18,3 +18,5 @@ export default ({ array, styles }) => {
     </div>
   );
 };
+
+export default Component;

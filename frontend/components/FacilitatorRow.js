@@ -65,7 +65,7 @@ function showData(data) {
   return res.join(", ");
 }
 
-export default ({ data }) => {
+const Component = ({ data }) => {
   const href = data.slug ? `/${data.slug}` : `/profiles/${data.id}`;
   return (
     <Box mx={1}>
@@ -110,3 +110,5 @@ export default ({ data }) => {
     </Box>
   );
 };
+
+export default Component;

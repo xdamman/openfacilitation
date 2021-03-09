@@ -11,7 +11,7 @@ const FixedFooter = styled.div`
   padding: 15px 0;
 `;
 
-export default ({ label, href }) => {
+const Component = ({ label, href }) => {
   return (
     <FixedFooter>
       <Button color="primary" variant="contained" href={href} disableElevation>
@@ -20,3 +20,5 @@ export default ({ label, href }) => {
     </FixedFooter>
   );
 };
+
+export default Component;

@@ -10,6 +10,8 @@ export const Avatar = styled.div`
   background-size: cover;
 `;
 
-export default ({ src, width }) => {
+const Component = ({ src, width }) => {
   return <Avatar src={src} width={width} />;
 };
+
+export default Component;

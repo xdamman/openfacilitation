@@ -35,7 +35,7 @@ const Description = styled.p`
   margin: 10px;
 `;
 
-export default ({ facilitator }) => {
+const PageComponent = ({ facilitator }) => {
   if (!facilitator) {
     return <div></div>;
   }
@@ -110,7 +110,7 @@ export default ({ facilitator }) => {
   );
 };
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params, req, res }) {
   const languages = await getData("Languages");
   const meetingTypes = await getData("Types");
   let facilitator = await getData("Facilitators", {
@@ -150,25 +150,11 @@ export async function getStaticProps({ params }) {
   )[0];
 
   // console.log(">>> after join facilitator", facilitator);
+  res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
 
   return {
     props: { facilitator },
-    // we will attempt to re-generate the page:
-    // - when a request comes in
-    // - at most once every 180 seconds
-    revalidate: 180,
   };
 }
 
-export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { facilitatorSlug: "xavierdamman" } },
-      { params: { facilitatorSlug: "leenschelfhout" } },
-      { params: { facilitatorSlug: "vincentdewaele" } },
-      { params: { facilitatorSlug: "stevendesanghere" } },
-      { params: { facilitatorSlug: "timoetheebres" } },
-    ],
-    fallback: true,
-  };
-}
+export default PageComponent;

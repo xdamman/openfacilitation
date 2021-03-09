@@ -27,7 +27,7 @@ const Topbar = styled.div`
   background: rgba(255, 255, 255, 0.95);
 `;
 
-export default ({ title }) => {
+const Component = ({ title }) => {
   return (
     <Topbar>
       <Flex alignItems="center">
@@ -55,3 +55,5 @@ export default ({ title }) => {
     </Topbar>
   );
 };
+
+export default Component;
