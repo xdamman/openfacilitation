@@ -5,6 +5,11 @@ import { space, layout, typography } from "styled-system";
 import Head from "next/head";
 
 const Page = styled.div`
+  max-width: 1280px;
+  margin: 0 auto;
+`;
+
+const PageContent = styled.div`
   max-width: 660px;
   margin: 0 auto;
   font-family: Content-font, Roboto, sans-serif;
@@ -36,7 +41,7 @@ const StyledLink = styled.a`
 `;
 
 const About = styled.div`
-  margin-top: 10px;
+  margin-top: 0px;
 `;
 
 const Footer = styled.div({}, space);
@@ -70,6 +75,7 @@ const Fineprint = styled.span`
 const H2 = styled.h2(
   {
     fontSize: "24px",
+    lineHeight: 1.2,
     color: "white",
     fontWeight: 600,
   },
@@ -79,42 +85,54 @@ const H2 = styled.h2(
 
 const P = styled.p({ fontWeight: 300 }, typography);
 
-const H3 = styled.h2`
-  font-size: 24px;x
+const H3 = styled.h3`
+  font-size: 24px;
+  line-height: 1.2;
   font-weight: 700;
-  margin: 40px 0 10px;
+  margin: 40px 0 0px;
 `;
 
-const Cover = styled.div`
-  position: relative;
-  & picture img {
-    width: 100%;
-    // filter: brightness(0.8);
-    // transform: scale(1);
-  }
+const H4 = styled.h4`
+  font-size: 18px;
+  font-weight: 300;
+  margin: 20px 0 10px;
 `;
 
-const CoverText = styled.div(
+const TopContent = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+`;
+
+const Cover = styled.div(
   {
-    boxSizing: "border-box",
-    borderRadius: "0 5px 5px 0",
-    justifyContent: "center",
-    color: "white",
-    alignItems: "center",
-    flexDirection: "column",
-    position: "absolute",
-    top: 0,
-    backdropFilter: "blur(2px)",
-    background: "rgba(0, 0, 0, 0.3)",
+    textAlign: "center",
+    "& picture img": {
+      width: "100%",
+      maxWidth: "600px",
+    },
   },
   space,
   layout
+);
+
+const CoverText = styled.div(
+  {
+    maxWidth: "660px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  space,
+  layout,
+  typography
 );
 
 const Topbar = styled.div`
   width: 100%;
   padding: 5px;
   height: 100%;
+  margin: 20px 0;
 `;
 
 const Logo = styled.div``;
@@ -161,129 +179,131 @@ const Homepage = () => (
         content="https://openfacilitation.com/images/openfacilitation-preview.jpg"
       />
     </Head>
-    <Topbar>
-      <Logo>
-        <Flex alignItems="center">
-          <LogoIcon
-            src="/images/openfacilitation-logo.svg"
-            width={[48, 52, 64]}
-            ml={[2, 3]}
-            mr={[1, 1]}
-          />
-          <Box fontSize={["12px", "14px", "16px"]}>
-            <Logotype>
-              Open <strong>Facilitation</strong>
-            </Logotype>
-          </Box>
-        </Flex>
-      </Logo>
-    </Topbar>
-    <Cover>
-      <picture>
-        <source
-          type="image/avif"
-          srcset="/images/openfacilitation-cover.avif"
-        />
-        <source
-          type="image/webp"
-          srcset="/images/openfacilitation-cover.webp"
-        />
-        <img
-          alt="open facilitation cover"
-          src="/images/openfacilitation-cover.jpg"
-        />
-      </picture>
-      <CoverText
-        mt={[0, 5, 5]}
-        ml={0}
-        width={["100%", "50%", "40%"]}
-        p={[3, 3, 4]}
-      >
-        <H2 fontSize={["18px", "20px", "28px"]} my={[2, 2, 3]}>
-          Find a facilitator for your next event
-        </H2>
-        <P fontSize={["13px", "14px", "16px"]}>
-          Whether you are organising a general assembly online or offline, a
-          brainstorming, a team building or retreat, we can help you find the
-          right person.
-        </P>
-        <Button
-          color="primary"
-          variant="contained"
-          href="/request"
-          size="medium"
-          disableElevation
-        >
-          Post your request
-        </Button>
-      </CoverText>
-    </Cover>
     <Page>
-      <center>
-        <About>
-          <H3>A Community of Facilitators</H3>
+      <Topbar>
+        <Logo>
+          <Flex alignItems="center">
+            <LogoIcon
+              src="/images/openfacilitation-logo.svg"
+              width={[48, 52, 64]}
+              ml={[2, 3]}
+              mr={[1, 1]}
+            />
+            <Box fontSize={["12px", "14px", "16px"]}>
+              <Logotype>
+                Open <strong>Facilitation</strong>
+              </Logotype>
+            </Box>
+          </Flex>
+        </Logo>
+      </Topbar>
+      <TopContent>
+        <Cover width={[1, 1, 1 / 2]}>
+          <picture>
+            <source
+              type="image/avif"
+              srcset="/images/openfacilitation-mosaic.avif"
+            />
+            <source
+              type="image/webp"
+              srcset="/images/openfacilitation-mosaic.webp"
+            />
+            <img
+              alt="open facilitation mosaic"
+              src="/images/openfacilitation-mosaic.jpg"
+            />
+          </picture>
+        </Cover>
+        <CoverText
+          width={[1, 1, 1 / 2.5]}
+          mx={[2, 2, 2]}
+          textAlign={["center", "center", "left"]}
+        >
+          <H3>Find a facilitator for your next event</H3>
           <p>
-            Facilitators are passionate about helping groups/teams reach their
-            full potential. They are experts in creating and moderating spaces
-            where people can meet, work, solve conflicts or take decisions
-            together. They have a feel for group dynamics and are excellent
-            listeners.
+            Whether you are organising a general assembly online or offline, a
+            brainstorming, a team building or retreat, we can help you find the
+            right person.
           </p>
-          <p>
-            To promote their work and improve their visibility, we built a
-            directory of facilitators. All facilitators have their own style and
-            expertise. This directory will make it easier to find the right
-            facilitator and to hire one of us.
-          </p>
-          <Button
-            color="primary"
-            variant="outlined"
-            href="/directory"
-            disableElevation
-          >
-            Browse the directory
-          </Button>
+          <Box mt={0}>
+            <Button
+              color="primary"
+              variant="contained"
+              href="/request"
+              size="medium"
+              disableElevation
+            >
+              Post your request
+            </Button>
+          </Box>
 
           <H3>Join our community</H3>
           <p>
             Are you a facilitator? Join our community to increase your
             visibility, learn from fellow facilitators and find new
             opportunities.
-            <Flex justifyContent="center">
-              <Box mt={3}>
-                <Button
-                  color="primary"
-                  variant="outlined"
-                  href="/join"
-                  disableElevation
-                >
-                  REGISTER AS A FACILITATOR
-                </Button>
-              </Box>
-            </Flex>
           </p>
-        </About>
+          <Box mt={0}>
+            <Button
+              color="primary"
+              variant="outlined"
+              href="/join"
+              disableElevation
+            >
+              REGISTER AS A FACILITATOR
+            </Button>
+          </Box>
+        </CoverText>
+      </TopContent>
+      <PageContent>
+        <center>
+          <About>
+            <H3>About</H3>
+            <H4>A Community of Facilitators</H4>
+            <p>
+              Facilitators are passionate about helping groups/teams reach their
+              full potential. They are experts in creating and moderating spaces
+              where people can meet, work, solve conflicts or take decisions
+              together. They have a feel for group dynamics and are excellent
+              listeners.
+            </p>
+            <p>
+              To promote their work and improve their visibility, we built a
+              directory of facilitators. All facilitators have their own style
+              and expertise. This directory will make it easier to find the
+              right facilitator and to hire one of us.
+            </p>
+            <Button
+              color="primary"
+              variant="outlined"
+              href="/directory"
+              disableElevation
+            >
+              Browse the directory
+            </Button>
+          </About>
 
-        <Footer mt={60}>
-          <FooterLinks>
-            <FooterLink href="https://docs.openfacilitation.com">
-              Documentation
-            </FooterLink>
-            <FooterLink href="https://docs.openfacilitation.com/membership">
-              Membership
-            </FooterLink>
-            <FooterLink href="/directory">Directory</FooterLink>
-            <FooterLink href="https://www.facebook.com/Open-Facilitation-107301451109828/">
-              Facebook
-            </FooterLink>
-            <FooterLink href="mailto:info@openfacilitation.com">
-              Email
-            </FooterLink>
-          </FooterLinks>
+          <Footer mt={60}>
+            <FooterLinks>
+              <FooterLink href="https://docs.openfacilitation.com">
+                Documentation
+              </FooterLink>
+              <FooterLink href="https://docs.openfacilitation.com/membership">
+                Membership
+              </FooterLink>
+              <FooterLink href="/directory">Directory</FooterLink>
+              <FooterLink href="https://www.facebook.com/Open-Facilitation-107301451109828/">
+                Facebook
+              </FooterLink>
+              <FooterLink href="mailto:info@openfacilitation.com">
+                Email
+              </FooterLink>
+            </FooterLinks>
 
-          <Fineprint>Open Facilitation</Fineprint>
-        </Footer>
-      </center>
+            <Fineprint>Open Facilitation</Fineprint>
+          </Footer>
+        </center>
+      </PageContent>
     </Page>
   </>
 );
