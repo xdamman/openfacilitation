@@ -101,11 +101,12 @@ const H4 = styled.h4`
 const TopContent = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 20px 0;
+  margin-top: -10px;
 `;
 
 const Cover = styled.div(
   {
+    marginTop: "30px",
     textAlign: "center",
     "& picture img": {
       width: "100%",
@@ -216,7 +217,7 @@ const Homepage = () => (
         </Cover>
         <CoverText
           width={[1, 1, 1 / 2.5]}
-          mx={[2, 2, 2]}
+          mx={[2, 2, 4]}
           textAlign={["center", "center", "left"]}
         >
           <H3>Find a facilitator for your next event</H3>
