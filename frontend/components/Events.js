@@ -38,6 +38,7 @@ const Description = styled.p`
 
 const Events = ({ events }) => {
   if (!events || events.length === 0) return <span />;
+  events.sort((a, b) => (a.startDate < b.startDate ? 1 : -1));
   return (
     <div>
       {events.map((event, i) => (
