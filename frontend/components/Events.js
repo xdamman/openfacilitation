@@ -46,7 +46,7 @@ const Events = ({ events }) => {
           <EventTitle>{event.name}</EventTitle>
           <Metadata>
             <span>{moment(event.startDate).format("MMMM Do YYYY")}</span>
-            {event.client[0] && (
+            {event.client && event.client[0] && (
               <span>
                 , organised by{" "}
                 <a href={event.client[0].website}>{event.client[0].name}</a>
